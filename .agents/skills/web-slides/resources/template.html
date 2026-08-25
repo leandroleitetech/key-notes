@@ -770,6 +770,81 @@
       text-align: center;
     }
 
+    /* ==========================================================================
+       RECURSOS & CAPABILITIES (3x3 MATRIX)
+       ========================================================================== */
+    .recursos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      width: 100%;
+    }
+
+    .recurso-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 12px 14px;
+      backdrop-filter: blur(16px);
+      transition: var(--transition-base);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .recurso-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-accent);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.12);
+    }
+
+    .recurso-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .recurso-title {
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .recurso-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid var(--border-accent);
+      color: var(--accent-sky);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .recurso-tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--accent-purple);
+      background: rgba(139, 92, 246, 0.12);
+      border: 1px solid rgba(139, 92, 246, 0.25);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .recurso-desc {
+      font-size: 0.74rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
     /* Code Box & Snippet */
     .code-box {
       background: var(--code-bg);
@@ -1211,6 +1286,52 @@
             <div class="sdlc-step"><span class="sdlc-step-badge">6</span><h4 class="sdlc-step-title">Deploy & CI</h4><p class="sdlc-step-desc">Validação contínua.</p></div>
           </div>
           <div class="sdlc-banner-callout"><span>Operação de ponta a ponta: <strong>da issue ao Pull Request validado</strong>.</span></div>
+        </div>
+      </div>
+    <!-- SLIDE 5: RECURSOS & FERRAMENTAL (MATRIZ 3x3 EXEMPLO) -->
+    <section class="slide" data-title="Recursos" data-notes="Exemplo de matriz de recursos 3x3.">
+      <div class="slide-content-wrapper">
+        <span class="slide-tag">Capacidades & Ferramental</span>
+        <h2 class="slide-title">Recursos <span class="gradient-text">Essenciais</span></h2>
+        <p class="slide-subtitle">O ecossistema completo de funcionalidades que potencializa a execução autônoma.</p>
+
+        <div class="recursos-grid">
+          <div class="recurso-card">
+            <div class="recurso-header"><div class="recurso-title"><span>Sessões</span></div><span class="recurso-tag">Execução</span></div>
+            <p class="recurso-desc">Workspaces isolados para cada tarefa com histórico completo e reprodução.</p>
+          </div>
+          <div class="recurso-card">
+            <div class="recurso-header"><div class="recurso-title"><span>DeepWikis</span></div><span class="recurso-tag">Contexto</span></div>
+            <p class="recurso-desc">Indexação semântica profunda do repositório e mapeamento de arquitetura.</p>
+          </div>
+          <div class="recurso-card">
+            <div class="recurso-header"><div class="recurso-title"><span>Playbooks</span></div><span class="recurso-tag">Automação</span></div>
+            <p class="recurso-desc">Roteiros operacionais padronizados para guiar tarefas repetitivas.</p>
+          </div>
+          <div class="recurso-card">
+            <div class="recurso-header"><div class="recurso-title"><span>Environments</span></div><span class="recurso-tag">Infra</span></div>
+            <p class="recurso-desc">Ambientes Linux configurados sob medida com runtimes e SDKs.</p>
+          </div>
+          <div class="recurso-card">
+            <div class="recurso-header"><div class="recurso-title"><span>Knowledge</span></div><span class="recurso-tag">Diretrizes</span></div>
+            <p class="recurso-desc">Base persistente de convenções, regras e padrões do time.</p>
+          </div>
+          <div class="recurso-card">
+            <div class="recurso-header"><div class="recurso-title"><span>Secrets</span></div><span class="recurso-tag">Segurança</span></div>
+            <p class="recurso-desc">Gestão segura de tokens e chaves com injeção protegida.</p>
+          </div>
+          <div class="recurso-card">
+            <div class="recurso-header"><div class="recurso-title"><span>Ask</span></div><span class="recurso-tag">Humano</span></div>
+            <p class="recurso-desc">Consulta ao engenheiro proativamente para tirar dúvidas e alinhar decisões.</p>
+          </div>
+          <div class="recurso-card">
+            <div class="recurso-header"><div class="recurso-title"><span>Schedule</span></div><span class="recurso-tag">Rotinas</span></div>
+            <p class="recurso-desc">Agendamento de tarefas recorrentes: dependências, linter e rotinas.</p>
+          </div>
+          <div class="recurso-card">
+            <div class="recurso-header"><div class="recurso-title"><span>CLI</span></div><span class="recurso-tag">Terminal</span></div>
+            <p class="recurso-desc">Controle total via linha de comando, GitHub PRs e CI/CD.</p>
+          </div>
         </div>
       </div>
     </section>

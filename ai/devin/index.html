@@ -773,6 +773,230 @@
     }
 
     /* ==========================================================================
+       DEVIN RECURSOS & CAPABILITIES (SLIDE 06 - 3x3 MATRIX)
+       ========================================================================== */
+    .recursos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      width: 100%;
+    }
+
+    .recurso-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 12px 14px;
+      backdrop-filter: blur(16px);
+      transition: var(--transition-base);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .recurso-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-accent);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.12);
+    }
+
+    .recurso-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .recurso-title {
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .recurso-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid var(--border-accent);
+      color: var(--accent-sky);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .recurso-tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--accent-purple);
+      background: rgba(139, 92, 246, 0.12);
+      border: 1px solid rgba(139, 92, 246, 0.25);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .recurso-desc {
+      font-size: 0.74rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    /* ==========================================================================
+       MELHORES PRÁTICAS DE AMBIENTE (SLIDE 07)
+       ========================================================================== */
+    .ambiente-highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 12px;
+      width: 100%;
+    }
+
+    .ambiente-highlight-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 10px 14px;
+      backdrop-filter: blur(16px);
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      transition: var(--transition-base);
+    }
+
+    .ambiente-highlight-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-accent);
+      transform: translateY(-2px);
+    }
+
+    .ambiente-hl-title {
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent-sky);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .ambiente-hl-desc {
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      line-height: 1.35;
+    }
+
+    .ambiente-componentes-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 12px;
+      width: 100%;
+    }
+
+    .componente-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 12px 14px;
+      backdrop-filter: blur(16px);
+      transition: var(--transition-base);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .componente-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-accent);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.12);
+    }
+
+    .componente-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .componente-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid var(--border-accent);
+      color: var(--accent-sky);
+      font-size: 0.82rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .componente-title {
+      font-family: var(--font-heading);
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    .componente-title code {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--accent-sky);
+      background: rgba(56, 189, 248, 0.08);
+      padding: 1px 4px;
+      border-radius: 4px;
+    }
+
+    .componente-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      font-size: 0.71rem;
+      color: var(--text-secondary);
+      line-height: 1.35;
+    }
+
+    .componente-list li {
+      display: flex;
+      gap: 6px;
+    }
+
+    .componente-list li::before {
+      content: "›";
+      color: var(--accent-sky);
+      font-weight: 700;
+      font-size: 0.85rem;
+      line-height: 1;
+    }
+
+    .ambiente-callout {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(90deg, rgba(56, 189, 248, 0.08) 0%, rgba(139, 92, 246, 0.12) 50%, rgba(255, 98, 0, 0.08) 100%);
+      border: 1px solid var(--border-accent);
+      border-radius: 10px;
+      padding: 8px 16px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-align: center;
+      width: 100%;
+    }
+
+    /* ==========================================================================
        CODE & COPYABLE SNIPPET BOX
        ========================================================================== */
     .code-box {
@@ -1267,47 +1491,47 @@
     </section>
 
     <!-- SLIDE 4: AGENDA -->
-    <section class="slide" data-title="Agenda do Workshop" data-notes="Apresentar o roteiro do dia para alinhar expectativas da comunidade. Destacar a parte prática com o Devin.">
+    <section class="slide" data-title="Agenda do Workshop" data-notes="Apresentar o roteiro do dia: 1. O que é o Devin, 2. Recursos, 3. Melhores Práticas de Ambiente, 4. Melhores Práticas de Prompt e Sessão, 5. Demo com prompts copiáveis, 6. Q&A.">
       <div class="slide-content-wrapper">
         <span class="slide-tag">Roteiro do Workshop</span>
         <h2 class="slide-title">O que vamos <span class="gradient-text">explorar hoje</span></h2>
-        <p class="slide-subtitle">Uma jornada estruturada da teoria à prática com agentes autônomos.</p>
+        <p class="slide-subtitle">Uma jornada prática da arquitetura de agentes à execução ao vivo.</p>
 
         <div class="grid-3">
           <div class="card">
             <div class="card-icon">01</div>
-            <h3 class="card-title">A Nova Era dos Agentes</h3>
-            <p class="card-desc">Copilots vs Agentes Autônomos. Por que o Devin representa uma mudança de paradigma na engenharia.</p>
+            <h3 class="card-title">O que é o Devin?</h3>
+            <p class="card-desc">Conceito de agente autônomo, ambiente de execução real e atuação no ciclo SDLC de ponta a ponta.</p>
           </div>
 
           <div class="card">
             <div class="card-icon">02</div>
-            <h3 class="card-title">Anatomia do Devin</h3>
-            <p class="card-desc">Como funcionam o loop de raciocínio, terminal seguro, navegador interativo e editor de código em sandbox.</p>
+            <h3 class="card-title">Recursos</h3>
+            <p class="card-desc">Terminal Linux, navegador web interativo, editor de código, controle de versão Git e sandbox segura.</p>
           </div>
 
           <div class="card">
             <div class="card-icon">03</div>
-            <h3 class="card-title">AI-Augmented Engineer</h3>
-            <p class="card-desc">Como o papel do desenvolvedor evolui de escritor de linhas para arquiteto, orquestrador e revisor crítico.</p>
+            <h3 class="card-title">Melhores Práticas de Ambiente</h3>
+            <p class="card-desc">Configuração de repositórios, gestão de dependências, variáveis de ambiente, credenciais e playbooks.</p>
           </div>
 
           <div class="card">
             <div class="card-icon">04</div>
-            <h3 class="card-title">Prompting & Playbooks</h3>
-            <p class="card-desc">Técnicas avançadas para instruir o Devin com clareza, critérios de aceite e testes automatizados.</p>
+            <h3 class="card-title">Melhores Práticas de Prompt & Sessão</h3>
+            <p class="card-desc">Instruções precisas, critérios de aceite estruturados, divisão de tarefas e refinamento em tempo real.</p>
           </div>
 
           <div class="card">
             <div class="card-icon">05</div>
-            <h3 class="card-title">Casos de Uso Reais</h3>
-            <p class="card-desc">Migrações de versão, refatoração em larga escala, correção de bugs complexos e novos microsserviços.</p>
+            <h3 class="card-title">Demo Prática</h3>
+            <p class="card-desc">Mão na massa.</p>
           </div>
 
           <div class="card">
             <div class="card-icon">06</div>
-            <h3 class="card-title">Live Demo & Q&A</h3>
-            <p class="card-desc">Mão na massa: atribuindo uma tarefa real ao Devin, acompanhando a execução e abrindo para perguntas.</p>
+            <h3 class="card-title">Q&A</h3>
+            <p class="card-desc">Perguntas, respostas, discussões abertas com a comunidade.</p>
           </div>
         </div>
       </div>
@@ -1335,7 +1559,7 @@
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
               Ambiente Real
             </h3>
-            <p class="highlight-desc">Acesso nativo a terminal Linux (shell), navegador web, editor de código e Git.</p>
+            <p class="highlight-desc">Recursos que a ferramenta proporciona.</p>
           </div>
 
           <div class="highlight-card">
@@ -1407,12 +1631,334 @@
       </div>
     </section>
 
-    <!-- SLIDE 5: PLAYBOOK DE PROMPTING (COM CONTEÚDO COPIÁVEL) -->
-    <section class="slide" data-title="Playbook & Prompts" data-notes="Mostrar como passar tarefas com precisão para o Devin. Ensinar os participantes a usar o botão 'Copiar' para testar em suas sessões.">
+    <!-- SLIDE 6: RECURSOS DO DEVIN (3x3 MATRIX) -->
+    <section class="slide" data-title="Recursos do Devin" data-notes="Apresentar o ecossistema de recursos do Devin: Sessões, DeepWikis, Playbooks, Environments, Knowledge, Secrets, Ask, Schedule e CLI.">
       <div class="slide-content-wrapper">
-        <span class="slide-tag">Boas Práticas & Prompting</span>
-        <h2 class="slide-title">Instruindo o Devin com <span class="gradient-text">Alta Eficácia</span></h2>
-        <p class="slide-subtitle">A clareza do contexto define o sucesso da tarefa. Veja o template recomendado:</p>
+        <span class="slide-tag">Capacidades & Ferramental</span>
+        <h2 class="slide-title">Recursos do <span class="gradient-text">Devin</span></h2>
+        <p class="slide-subtitle">O ecossistema completo de funcionalidades que potencializa a engenharia de software autônoma.</p>
+
+        <div class="recursos-grid">
+          <!-- 1. Sessões -->
+          <div class="recurso-card">
+            <div class="recurso-header">
+              <div class="recurso-title">
+                <div class="recurso-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                </div>
+                <span>Sessões</span>
+              </div>
+              <span class="recurso-tag">Execução</span>
+            </div>
+            <p class="recurso-desc">Workspaces isolados para cada tarefa com histórico completo, reprodução de passos e execução concorrente.</p>
+          </div>
+
+          <!-- 2. DeepWikis -->
+          <div class="recurso-card">
+            <div class="recurso-header">
+              <div class="recurso-title">
+                <div class="recurso-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                </div>
+                <span>DeepWikis</span>
+              </div>
+              <span class="recurso-tag">Contexto</span>
+            </div>
+            <p class="recurso-desc">Indexação semântica profunda do repositório, mapeando dependências, arquitetura e documentação viva.</p>
+          </div>
+
+          <!-- 3. Playbooks -->
+          <div class="recurso-card">
+            <div class="recurso-header">
+              <div class="recurso-title">
+                <div class="recurso-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                </div>
+                <span>Playbooks</span>
+              </div>
+              <span class="recurso-tag">Automação</span>
+            </div>
+            <p class="recurso-desc">Roteiros operacionais padronizados que ensinam o Devin a executar fluxos recorrentes com precisão.</p>
+          </div>
+
+          <!-- 4. Environments -->
+          <div class="recurso-card">
+            <div class="recurso-header">
+              <div class="recurso-title">
+                <div class="recurso-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+                </div>
+                <span>Environments</span>
+              </div>
+              <span class="recurso-tag">Infra</span>
+            </div>
+            <p class="recurso-desc">Ambientes Linux dedicados pré-configurados com runtimes, SDKs, Docker, bancos e dependências necessárias.</p>
+          </div>
+
+          <!-- 5. Knowledge Base -->
+          <div class="recurso-card">
+            <div class="recurso-header">
+              <div class="recurso-title">
+                <div class="recurso-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                </div>
+                <span>Knowledge Base</span>
+              </div>
+              <span class="recurso-tag">Diretrizes</span>
+            </div>
+            <p class="recurso-desc">Base persistente de convenções, regras de arquitetura, boas práticas e lições aprendidas pelo time.</p>
+          </div>
+
+          <!-- 6. Secrets -->
+          <div class="recurso-card">
+            <div class="recurso-header">
+              <div class="recurso-title">
+                <div class="recurso-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                </div>
+                <span>Secrets</span>
+              </div>
+              <span class="recurso-tag">Segurança</span>
+            </div>
+            <p class="recurso-desc">Armazenamento seguro de tokens, credenciais e chaves de API com injeção protegida em tempo de execução.</p>
+          </div>
+
+          <!-- 7. Ask -->
+          <div class="recurso-card">
+            <div class="recurso-header">
+              <div class="recurso-title">
+                <div class="recurso-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                </div>
+                <span>Ask (Dúvidas)</span>
+              </div>
+              <span class="recurso-tag">Humano</span>
+            </div>
+            <p class="recurso-desc">Capacidade de consultar o engenheiro proativamente para tirar dúvidas e alinhar decisões antes de prosseguir.</p>
+          </div>
+
+          <!-- 8. Schedule -->
+          <div class="recurso-card">
+            <div class="recurso-header">
+              <div class="recurso-title">
+                <div class="recurso-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <span>Schedule</span>
+              </div>
+              <span class="recurso-tag">Rotinas</span>
+            </div>
+            <p class="recurso-desc">Agendamento de tarefas recorrentes: atualizações de dependências, migrações contínuas e checagens de linters.</p>
+          </div>
+
+          <!-- 9. CLI & Integrações -->
+          <div class="recurso-card">
+            <div class="recurso-header">
+              <div class="recurso-title">
+                <div class="recurso-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                </div>
+                <span>CLI & Integrações</span>
+              </div>
+              <span class="recurso-tag">Terminal</span>
+            </div>
+            <p class="recurso-desc">Controle total via linha de comando no terminal local, webhooks, GitHub PRs, Slack e esteiras de CI/CD.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7: MELHORES PRÁTICAS DE AMBIENTE -->
+    <section class="slide" data-title="Práticas de Ambiente" data-notes="Explicar a importância de uma base sólida: Blueprint determinístico para evitar setup manual, AGENTS.md como manual de operações e DoD, Knowledge Base para regras de negócio e Skills modulares para economia de tokens.">
+      <div class="slide-content-wrapper">
+        <span class="slide-tag">Arquitetura & Governança</span>
+        <h2 class="slide-title">Melhores Práticas de <span class="gradient-text">Ambiente</span></h2>
+        <p class="slide-subtitle">Estruturando contexto, regras e ferramentas para máxima eficiência e economia de tokens.</p>
+
+        <!-- Highlights Principais (3 Cards Superiores) -->
+        <div class="ambiente-highlights-grid">
+          <div class="ambiente-highlight-card">
+            <div class="ambiente-hl-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Padronização &amp; Reprodutibilidade</span>
+            </div>
+            <p class="ambiente-hl-desc">Garante dependências pré-instaladas, eliminando setup repetitivo e falhas em tempo de execução.</p>
+          </div>
+
+          <div class="ambiente-highlight-card">
+            <div class="ambiente-hl-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/></svg>
+              <span>Economia de Tokens</span>
+            </div>
+            <p class="ambiente-hl-desc">Instruções modulares e focadas evitam poluir a janela de contexto com informações redundantes.</p>
+          </div>
+
+          <div class="ambiente-highlight-card">
+            <div class="ambiente-hl-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span>Conformidade Arquitetural</span>
+            </div>
+            <p class="ambiente-hl-desc">O agente programa alinhado aos design patterns, padrões de commits e boas práticas do time.</p>
+          </div>
+        </div>
+
+        <!-- 4 Componentes de um Ambiente Sólido -->
+        <div class="ambiente-componentes-grid">
+          <!-- 1. Blueprint -->
+          <div class="componente-card">
+            <div class="componente-header">
+              <div class="componente-icon">⚙️</div>
+              <h3 class="componente-title">Blueprint <code>blueprint.yml</code></h3>
+            </div>
+            <ul class="componente-list">
+              <li>Provisionamento determinístico da sandbox (JDK, Maven, Docker, CLIs).</li>
+              <li>Startup instantâneo sem necessidade de reconfigurar o ambiente por tarefa.</li>
+            </ul>
+          </div>
+
+          <!-- 2. AGENTS.md -->
+          <div class="componente-card">
+            <div class="componente-header">
+              <div class="componente-icon">📋</div>
+              <h3 class="componente-title">Diretrizes <code>AGENTS.md</code></h3>
+            </div>
+            <ul class="componente-list">
+              <li>Manual de Operações: comandos de teste, convenção de branches e commits.</li>
+              <li>Estabelece o Definition of Done (DoD) auditado antes de abrir PR.</li>
+            </ul>
+          </div>
+
+          <!-- 3. Knowledge Base -->
+          <div class="componente-card">
+            <div class="componente-header">
+              <div class="componente-icon">🧠</div>
+              <h3 class="componente-title">Knowledge Base &amp; Wiki</h3>
+            </div>
+            <ul class="componente-list">
+              <li>Contexto de negócio, regras de domínio e glossário técnico do repositório.</li>
+              <li>Guias de troubleshooting e lições aprendidas em sessões anteriores.</li>
+            </ul>
+          </div>
+
+          <!-- 4. Skills Customizadas -->
+          <div class="componente-card">
+            <div class="componente-header">
+              <div class="componente-icon">🧰</div>
+              <h3 class="componente-title">Skills Customizadas</h3>
+            </div>
+            <ul class="componente-list">
+              <li>Extensão de capacidades sob demanda com scripts e CLIs dedicadas.</li>
+              <li>Carregamento modular: consome ferramentas apenas quando a tarefa exige.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Destaque Central / Conclusão -->
+        <div class="ambiente-callout">
+          <span>💡 Um ambiente bem configurado transforma o Devin de um executor reativo em um <strong>desenvolvedor sênior integrado ao padrão da sua empresa</strong>.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 8: MELHORES PRÁTICAS DE PROMPT & SESSÃO -->
+    <section class="slide" data-title="Práticas de Prompt" data-notes="Enfatizar: prompt para agentes não é bate-papo, é especificação de software executável. Detalhar os 4 pilares do padrão ouro: Contexto de negócio, Restrições técnicas, Cenários Gherkin (BDD) e Critérios de Sucesso (DoR & DoD).">
+      <div class="slide-content-wrapper">
+        <span class="slide-tag">Prompt Engineering & BDD</span>
+        <h2 class="slide-title">Melhores Práticas de <span class="gradient-text">Prompt &amp; Sessão</span></h2>
+        <p class="slide-subtitle">Como estruturar comandos precisos e especificações executáveis para agentes autônomos.</p>
+
+        <!-- Highlights Principais (3 Cards Superiores) -->
+        <div class="ambiente-highlights-grid">
+          <div class="ambiente-highlight-card">
+            <div class="ambiente-hl-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              <span>Especificação &gt; Bate-papo</span>
+            </div>
+            <p class="ambiente-hl-desc">Interagir com o Devin não é bater papo com chatbot; é escrever uma especificação executável.</p>
+          </div>
+
+          <div class="ambiente-highlight-card">
+            <div class="ambiente-hl-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span>Redução de Ambiguidade</span>
+            </div>
+            <p class="ambiente-hl-desc">IAs preenchem lacunas. Prompt vago gera alucinação; prompt estruturado gera código de produção.</p>
+          </div>
+
+          <div class="ambiente-highlight-card">
+            <div class="ambiente-hl-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              <span>Desenvolvimento Guiado por BDD</span>
+            </div>
+            <p class="ambiente-hl-desc">Linguagem estruturada em Gherkin permite que o agente crie os testes antes da implementação (TDD).</p>
+          </div>
+        </div>
+
+        <!-- 4 Componentes do Padrão Ouro -->
+        <div class="ambiente-componentes-grid">
+          <!-- 1. Contexto e Escopo de Negócio -->
+          <div class="componente-card">
+            <div class="componente-header">
+              <div class="componente-icon">🎯</div>
+              <h3 class="componente-title">1. Contexto &amp; Negócio</h3>
+            </div>
+            <ul class="componente-list">
+              <li>Define o <strong>"Porquê"</strong>: problema e impacto esperado (ex: proteger dados sensíveis).</li>
+              <li>Orienta a IA nas microdecisões quando surgem dúvidas de negócio.</li>
+            </ul>
+          </div>
+
+          <!-- 2. Restrições e Escopo Técnico -->
+          <div class="componente-card">
+            <div class="componente-header">
+              <div class="componente-icon">🚧</div>
+              <h3 class="componente-title">2. Restrições Técnicas</h3>
+            </div>
+            <ul class="componente-list">
+              <li>Define o <strong>"Como"</strong>: tecnologias obrigatórias (ex: <code>spring-security</code>, Stateless).</li>
+              <li>Evita dependências desnecessárias ou reinventar a roda.</li>
+            </ul>
+          </div>
+
+          <!-- 3. Especificação Gherkin -->
+          <div class="componente-card">
+            <div class="componente-header">
+              <div class="componente-icon">🧪</div>
+              <h3 class="componente-title">3. Gherkin (Comportamento)</h3>
+            </div>
+            <ul class="componente-list">
+              <li>Padrão <em>Given-When-Then</em> validado por Martin Fowler.</li>
+              <li>Cenários exatos (ex: <em>Sem login, ao acessar /owners, retorne 401</em>).</li>
+              <li>Permite gerar testes unitários e de integração autônomos.</li>
+            </ul>
+          </div>
+
+          <!-- 4. Critérios DoR & DoD -->
+          <div class="componente-card">
+            <div class="componente-header">
+              <div class="componente-icon">✅</div>
+              <h3 class="componente-title">4. Sucesso (DoR &amp; DoD)</h3>
+            </div>
+            <ul class="componente-list">
+              <li><strong>DoR:</strong> Estado inicial (ex: backend compilando localmente).</li>
+              <li><strong>DoD:</strong> Validação final (ex: testes passando, build verde, branch criada e PR com Conventional Commits).</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Destaque Central / Conclusão -->
+        <div class="ambiente-callout">
+          <span>💡 Um bom prompt inverte o controle: você define as <strong>fronteiras (Restrições)</strong> e os <strong>resultados (Gherkin/DoD)</strong>, e deixa a IA descobrir a implementação.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE: DEMO NA PRÁTICA (PROMPT COPIÁVEL) -->
+    <section class="slide" data-title="Demo na Prática" data-notes="Demonstração ao vivo: instruir o Devin a pegar uma issue real no Linear, aplicando otimização de custo (Token Saver), escopo restrito e critérios de DOD. Convide a comunidade a copiar o prompt.">
+      <div class="slide-content-wrapper">
+        <span class="slide-tag">Mão na Massa & Live Demo</span>
+        <h2 class="slide-title">Demo na Prática: <span class="gradient-text">Prompt de Execução</span></h2>
+        <p class="slide-subtitle">Exemplo real com diretrizes de economia de tokens (*Token Saver*), escopo delimitado e entrega via PR:</p>
 
         <div class="code-box">
           <div class="code-header">
@@ -1421,87 +1967,69 @@
               <div class="code-dot yellow"></div>
               <div class="code-dot green"></div>
             </div>
-            <span class="code-lang">template-prompt-devin.md</span>
+            <span class="code-lang">prompt-demo-linear.md</span>
             <button class="copy-btn" onclick="copySnippet(this)">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
               <span>Copiar Prompt</span>
             </button>
           </div>
-          <pre class="code-content"><code>### 🎯 OBJETIVO DA TAREFA
-Migrar o microsserviço de pagamentos para Java 21 & Spring Boot 3.3 mantendo 100% de compatibilidade com a API legada.
+          <pre class="code-content"><code>@Devin pegue a issue "feature-controle-de-acesso-e-autenticacao-de-usuarios-na-plataforma" do Linear.
 
-### 📋 CRITÉRIOS DE ACEITE
-1. Atualizar o pom.xml com as versões mais recentes das dependências estáveis.
-2. Substituir todas as importações javax.* por jakarta.*.
-3. Executar a suite de testes unitários (`mvn clean test`) e garantir zero falhas.
-4. Gerar um relatório detalhando breaking changes resolvidas e abrir Pull Request.
+Diretrizes de Execução &amp; Otimização de Custo (Token Saver):
 
-### ⚠️ RESTRIÇÕES & AMBIENTE
-- Não alterar contratos de DTOs públicos existentes.
-- Utilizar branch: `feature/migration-java21-spring33`.</code></pre>
+Modo Econômico: Utilize o modelo/modo de menor custo de créditos/tokens disponível (Fast / Eco / Fusion / Haiku / Flash).
+
+Escopo Restrito: Não faça varredura em todo o repositório nem instale bibliotecas pesadas de terceiros. Use apenas os starters padrões já descritos (spring-boot-starter-security e APIs nativas do Angular).
+
+Sem over-engineering: Implemente a autenticação básica em memória (InMemoryUserDetailsManager e httpBasic) no backend e interceptor com storage simples no frontend.
+
+Instruções de Entrega:
+
+Siga estritamente o Escopo Técnico, Gherkin e DOD descritos na issue do Linear.
+
+Crie a branch feature-controle-de-acesso-e-autenticacao-de-usuarios-na-plataforma.
+
+Suba o Pull Request com a descrição dos testes executados e me avise aqui no canal assim que a sessão for concluída.</code></pre>
         </div>
       </div>
     </section>
 
-    <!-- SLIDE 6: O PAPEL DO ENGENHEIRO AUMENTADO -->
-    <section class="slide" data-title="O Engenheiro AI-Augmented" data-notes="Frisar que a IA não substitui o engenheiro sênior, mas multiplica sua capacidade em 10x quando usada com rigor técnico e arquitetura sólida.">
-      <div class="slide-content-wrapper">
-        <span class="slide-tag">Evolução de Carreira</span>
-        <h2 class="slide-title">O Engenheiro <span class="gradient-text">AI-Augmented</span></h2>
-        <p class="slide-subtitle">Como as habilidades do desenvolvedor mudam no dia a dia com agentes autônomos.</p>
-
-        <div class="grid-3">
-          <div class="card">
-            <div class="card-icon">01</div>
-            <h3 class="card-title">Arquitetura & Design</h3>
-            <p class="card-desc">Foco total em decisões estratégicas de alto nível: domínios DDD, resiliência, segurança e trade-offs arquiteturais.</p>
-          </div>
-
-          <div class="card">
-            <div class="card-icon">02</div>
-            <h3 class="card-title">Definição de Contexto</h3>
-            <p class="card-desc">Engenharia de requisitos precisa: escrever especificações claras, contratos de API e testes automatizados de ponta a ponta.</p>
-          </div>
-
-          <div class="card">
-            <div class="card-icon">03</div>
-            <h3 class="card-title">Supervisão Crítica</h3>
-            <p class="card-desc">Code review rigoroso, auditoria de segurança, validação de performance e garantia de conformidade corporativa.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 7: CONCLUSÃO & CONTATOS -->
-    <section class="slide" data-title="Conclusão & Conexões" data-notes="Agradecer a todos, abrir para perguntas e disponibilizar os links do LinkedIn, site e comunidade SouJava.">
+    <!-- SLIDE 8: Q&A & ENCERRAMENTO -->
+    <section class="slide" data-title="Q&A" data-notes="Sessão de Q&A: abrir microfones e chat para responder dúvidas da comunidade sobre o Devin, prompt engineering, boas práticas e encerramento do workshop.">
       <div class="slide-content-wrapper" style="text-align: center; align-items: center;">
-        <span class="slide-tag">Encerramento & Q&A</span>
+        <span class="slide-tag">Perguntas & Respostas</span>
         <h2 class="slide-title" style="font-size: clamp(2.2rem, 4vw, 3.5rem);">
-          Vamos construir o futuro <br>
-          <span class="gradient-text">da Engenharia de Software!</span>
+          Q&A • <span class="gradient-text">Perguntas & Respostas</span>
         </h2>
-        <p class="slide-subtitle" style="text-align: center; max-width: 650px;">
-          Obrigado pela presença no Workshop da Comunidade Devin. Hora de colocar as mãos no código e testar seus agentes!
+        <p class="slide-subtitle" style="text-align: center; max-width: 720px; margin-bottom: 24px;">
+          Espaço aberto para dúvidas, considerações sobre o Devin, agentes autônomos e experiências práticas.
         </p>
 
-        <div class="card" style="max-width: 700px; width: 100%; padding: 26px; border: 1px solid var(--border-accent);">
-          <h3 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 16px; color: var(--text-primary);">Conecte-se comigo</h3>
+        <div class="card" style="max-width: 760px; width: 100%; padding: 24px 28px; border: 1px solid var(--border-accent); box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);">
+          <h3 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 16px; color: var(--text-primary);">Conecte-se & Comunidade</h3>
           
-          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
-            <a href="https://linkedin.com/in/leandroleitetech" target="_blank" rel="noopener noreferrer" class="social-pill" style="justify-content: center; padding: 10px;">
-              <strong>LinkedIn</strong>
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
+            <a href="https://linkedin.com/in/leandroleitetech" target="_blank" rel="noopener noreferrer" class="footer-social-pill" style="justify-content: center; padding: 10px 12px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              <span>LinkedIn</span>
             </a>
-            <a href="https://leandroleitetech.com" target="_blank" rel="noopener noreferrer" class="social-pill" style="justify-content: center; padding: 10px;">
-              <strong>Website Oficial</strong>
+            <a href="https://leandroleitetech.com" target="_blank" rel="noopener noreferrer" class="footer-social-pill" style="justify-content: center; padding: 10px 12px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              <span>Website</span>
             </a>
-            <a href="https://soujava.org.br" target="_blank" rel="noopener noreferrer" class="social-pill" style="justify-content: center; padding: 10px;">
-              <strong>Comunidade SouJava</strong>
+            <a href="https://github.com/leandroleitetech" target="_blank" rel="noopener noreferrer" class="footer-social-pill" style="justify-content: center; padding: 10px 12px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>GitHub</span>
+            </a>
+            <a href="https://soujava.org.br" target="_blank" rel="noopener noreferrer" class="footer-social-pill" style="justify-content: center; padding: 10px 12px;">
+              <span class="soujava-badge" style="font-size: 0.7rem; padding: 1px 5px;">SouJava</span>
+              <span>Comunidade</span>
             </a>
           </div>
         </div>
 
-        <p style="margin-top: 22px; font-size: 0.85rem; color: var(--text-muted); font-family: var(--font-mono);">
-          Dúvidas, perguntas ou trocas de ideias? Pergunte agora!
+        <p style="margin-top: 20px; font-size: 0.85rem; color: var(--text-muted); font-family: var(--font-mono);">
+          💬 Microfones e chat abertos — fique à vontade para perguntar!
         </p>
       </div>
     </section>
