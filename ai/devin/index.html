@@ -997,6 +997,136 @@
     }
 
     /* ==========================================================================
+       MELHORES PRÁTICAS DE PROMPT & SESSÃO (SLIDE 08 - SPLIT 2-COL)
+       ========================================================================== */
+    .prompt-main-layout {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 16px;
+      margin-bottom: 12px;
+      width: 100%;
+      align-items: stretch;
+    }
+
+    .prompt-principles-col {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      justify-content: space-between;
+    }
+
+    .prompt-principle-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 10px 12px;
+      backdrop-filter: blur(16px);
+      transition: var(--transition-base);
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .prompt-principle-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-accent);
+      transform: translateX(3px);
+    }
+
+    .prompt-principle-title {
+      font-family: var(--font-heading);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent-sky);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .prompt-principle-desc {
+      font-size: 0.71rem;
+      color: var(--text-secondary);
+      line-height: 1.35;
+    }
+
+    .prompt-gold-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .gold-step-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 10px 12px;
+      backdrop-filter: blur(16px);
+      transition: var(--transition-base);
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .gold-step-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-accent);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(56, 189, 248, 0.12);
+    }
+
+    .gold-step-header {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .gold-step-badge {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid var(--border-accent);
+      color: var(--accent-sky);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .gold-step-title {
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .gold-step-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+      line-height: 1.32;
+    }
+
+    .gold-step-list li {
+      display: flex;
+      gap: 6px;
+    }
+
+    .gold-step-list li::before {
+      content: "›";
+      color: var(--accent-sky);
+      font-weight: 700;
+      font-size: 0.85rem;
+      line-height: 1;
+    }
+
+    /* ==========================================================================
        CODE & COPYABLE SNIPPET BOX
        ========================================================================== */
     .code-box {
@@ -1771,7 +1901,7 @@
     <!-- SLIDE 7: MELHORES PRÁTICAS DE AMBIENTE -->
     <section class="slide" data-title="Práticas de Ambiente" data-notes="Explicar a importância de uma base sólida: Blueprint determinístico para evitar setup manual, AGENTS.md como manual de operações e DoD, Knowledge Base para regras de negócio e Skills modulares para economia de tokens.">
       <div class="slide-content-wrapper">
-        <span class="slide-tag">Arquitetura & Governança</span>
+        <span class="slide-tag">Arquitetura &amp; Governança</span>
         <h2 class="slide-title">Melhores Práticas de <span class="gradient-text">Ambiente</span></h2>
         <p class="slide-subtitle">Estruturando contexto, regras e ferramentas para máxima eficiência e economia de tokens.</p>
 
@@ -1807,7 +1937,9 @@
           <!-- 1. Blueprint -->
           <div class="componente-card">
             <div class="componente-header">
-              <div class="componente-icon">⚙️</div>
+              <div class="componente-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              </div>
               <h3 class="componente-title">Blueprint <code>blueprint.yml</code></h3>
             </div>
             <ul class="componente-list">
@@ -1819,7 +1951,9 @@
           <!-- 2. AGENTS.md -->
           <div class="componente-card">
             <div class="componente-header">
-              <div class="componente-icon">📋</div>
+              <div class="componente-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              </div>
               <h3 class="componente-title">Diretrizes <code>AGENTS.md</code></h3>
             </div>
             <ul class="componente-list">
@@ -1831,7 +1965,9 @@
           <!-- 3. Knowledge Base -->
           <div class="componente-card">
             <div class="componente-header">
-              <div class="componente-icon">🧠</div>
+              <div class="componente-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              </div>
               <h3 class="componente-title">Knowledge Base &amp; Wiki</h3>
             </div>
             <ul class="componente-list">
@@ -1843,7 +1979,9 @@
           <!-- 4. Skills Customizadas -->
           <div class="componente-card">
             <div class="componente-header">
-              <div class="componente-icon">🧰</div>
+              <div class="componente-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+              </div>
               <h3 class="componente-title">Skills Customizadas</h3>
             </div>
             <ul class="componente-list">
@@ -1855,100 +1993,105 @@
 
         <!-- Destaque Central / Conclusão -->
         <div class="ambiente-callout">
-          <span>💡 Um ambiente bem configurado transforma o Devin de um executor reativo em um <strong>desenvolvedor sênior integrado ao padrão da sua empresa</strong>.</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--accent-sky); flex-shrink: 0;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span>Um ambiente bem configurado transforma o Devin de um executor reativo em um <strong>desenvolvedor sênior integrado ao padrão da sua empresa</strong>.</span>
         </div>
       </div>
     </section>
 
-    <!-- SLIDE 8: MELHORES PRÁTICAS DE PROMPT & SESSÃO -->
+    <!-- SLIDE 8: MELHORES PRÁTICAS DE PROMPT & SESSÃO (SPLIT LAYOUT) -->
     <section class="slide" data-title="Práticas de Prompt" data-notes="Enfatizar: prompt para agentes não é bate-papo, é especificação de software executável. Detalhar os 4 pilares do padrão ouro: Contexto de negócio, Restrições técnicas, Cenários Gherkin (BDD) e Critérios de Sucesso (DoR & DoD).">
       <div class="slide-content-wrapper">
-        <span class="slide-tag">Prompt Engineering & BDD</span>
+        <span class="slide-tag">Prompt Engineering &amp; BDD</span>
         <h2 class="slide-title">Melhores Práticas de <span class="gradient-text">Prompt &amp; Sessão</span></h2>
         <p class="slide-subtitle">Como estruturar comandos precisos e especificações executáveis para agentes autônomos.</p>
 
-        <!-- Highlights Principais (3 Cards Superiores) -->
-        <div class="ambiente-highlights-grid">
-          <div class="ambiente-highlight-card">
-            <div class="ambiente-hl-title">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-              <span>Especificação &gt; Bate-papo</span>
+        <!-- Layout Split: 3 Princípios à Esquerda + 4 Pilares (2x2) à Direita -->
+        <div class="prompt-main-layout">
+          <!-- Coluna Esquerda: Princípios Fundamentais -->
+          <div class="prompt-principles-col">
+            <div class="prompt-principle-card">
+              <div class="prompt-principle-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                <span>Especificação &gt; Bate-papo</span>
+              </div>
+              <p class="prompt-principle-desc">Interagir com agentes autônomos é escrever uma especificação executável, não bater papo.</p>
             </div>
-            <p class="ambiente-hl-desc">Interagir com o Devin não é bater papo com chatbot; é escrever uma especificação executável.</p>
+
+            <div class="prompt-principle-card">
+              <div class="prompt-principle-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <span>Redução de Ambiguidade</span>
+              </div>
+              <p class="prompt-principle-desc">IAs preenchem lacunas. Prompt vago gera alucinação; prompt estruturado gera código de produção.</p>
+            </div>
+
+            <div class="prompt-principle-card">
+              <div class="prompt-principle-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                <span>Sessões Atômicas &amp; Focadas</span>
+              </div>
+              <p class="prompt-principle-desc">Um objetivo claro por sessão. Dividir tarefas complexas evita saturação de contexto e economiza tokens.</p>
+            </div>
           </div>
 
-          <div class="ambiente-highlight-card">
-            <div class="ambiente-hl-title">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-              <span>Redução de Ambiguidade</span>
+          <!-- Coluna Direita: O Padrão Ouro de Prompt (2x2 Grid) -->
+          <div class="prompt-gold-grid">
+            <!-- 1. Contexto e Negócio -->
+            <div class="gold-step-card">
+              <div class="gold-step-header">
+                <span class="gold-step-badge">01</span>
+                <h3 class="gold-step-title">Contexto &amp; Negócio</h3>
+              </div>
+              <ul class="gold-step-list">
+                <li>Define o <strong>"Porquê"</strong>: problema e impacto esperado (ex: proteção de dados).</li>
+                <li>Orienta microdecisões da IA durante a codificação.</li>
+              </ul>
             </div>
-            <p class="ambiente-hl-desc">IAs preenchem lacunas. Prompt vago gera alucinação; prompt estruturado gera código de produção.</p>
-          </div>
 
-          <div class="ambiente-highlight-card">
-            <div class="ambiente-hl-title">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-              <span>Desenvolvimento Guiado por BDD</span>
+            <!-- 2. Restrições Técnicas -->
+            <div class="gold-step-card">
+              <div class="gold-step-header">
+                <span class="gold-step-badge">02</span>
+                <h3 class="gold-step-title">Restrições Técnicas</h3>
+              </div>
+              <ul class="gold-step-list">
+                <li>Define o <strong>"Como"</strong>: starters, Stateless, CORS e arquitetura.</li>
+                <li>Evita dependências desnecessárias ou soluções fora do padrão.</li>
+              </ul>
             </div>
-            <p class="ambiente-hl-desc">Linguagem estruturada em Gherkin permite que o agente crie os testes antes da implementação (TDD).</p>
-          </div>
-        </div>
 
-        <!-- 4 Componentes do Padrão Ouro -->
-        <div class="ambiente-componentes-grid">
-          <!-- 1. Contexto e Escopo de Negócio -->
-          <div class="componente-card">
-            <div class="componente-header">
-              <div class="componente-icon">🎯</div>
-              <h3 class="componente-title">1. Contexto &amp; Negócio</h3>
+            <!-- 3. Especificação Gherkin -->
+            <div class="gold-step-card">
+              <div class="gold-step-header">
+                <span class="gold-step-badge">03</span>
+                <h3 class="gold-step-title">Cenários Gherkin</h3>
+              </div>
+              <ul class="gold-step-list">
+                <li>Padrão <em>Given-When-Then</em> (Martin Fowler).</li>
+                <li>Cenários exatos (ex: <em>Sem login, /owners retorna HTTP 401</em>).</li>
+                <li>Gera testes unitários e de integração autônomos.</li>
+              </ul>
             </div>
-            <ul class="componente-list">
-              <li>Define o <strong>"Porquê"</strong>: problema e impacto esperado (ex: proteger dados sensíveis).</li>
-              <li>Orienta a IA nas microdecisões quando surgem dúvidas de negócio.</li>
-            </ul>
-          </div>
 
-          <!-- 2. Restrições e Escopo Técnico -->
-          <div class="componente-card">
-            <div class="componente-header">
-              <div class="componente-icon">🚧</div>
-              <h3 class="componente-title">2. Restrições Técnicas</h3>
+            <!-- 4. Sucesso DoR & DoD -->
+            <div class="gold-step-card">
+              <div class="gold-step-header">
+                <span class="gold-step-badge">04</span>
+                <h3 class="gold-step-title">Critérios DoR &amp; DoD</h3>
+              </div>
+              <ul class="gold-step-list">
+                <li><strong>DoR:</strong> Pré-requisito (ex: backend compilando).</li>
+                <li><strong>DoD:</strong> Validação (testes passando, build verde, branch e PR criado).</li>
+              </ul>
             </div>
-            <ul class="componente-list">
-              <li>Define o <strong>"Como"</strong>: tecnologias obrigatórias (ex: <code>spring-security</code>, Stateless).</li>
-              <li>Evita dependências desnecessárias ou reinventar a roda.</li>
-            </ul>
-          </div>
-
-          <!-- 3. Especificação Gherkin -->
-          <div class="componente-card">
-            <div class="componente-header">
-              <div class="componente-icon">🧪</div>
-              <h3 class="componente-title">3. Gherkin (Comportamento)</h3>
-            </div>
-            <ul class="componente-list">
-              <li>Padrão <em>Given-When-Then</em> validado por Martin Fowler.</li>
-              <li>Cenários exatos (ex: <em>Sem login, ao acessar /owners, retorne 401</em>).</li>
-              <li>Permite gerar testes unitários e de integração autônomos.</li>
-            </ul>
-          </div>
-
-          <!-- 4. Critérios DoR & DoD -->
-          <div class="componente-card">
-            <div class="componente-header">
-              <div class="componente-icon">✅</div>
-              <h3 class="componente-title">4. Sucesso (DoR &amp; DoD)</h3>
-            </div>
-            <ul class="componente-list">
-              <li><strong>DoR:</strong> Estado inicial (ex: backend compilando localmente).</li>
-              <li><strong>DoD:</strong> Validação final (ex: testes passando, build verde, branch criada e PR com Conventional Commits).</li>
-            </ul>
           </div>
         </div>
 
         <!-- Destaque Central / Conclusão -->
         <div class="ambiente-callout">
-          <span>💡 Um bom prompt inverte o controle: você define as <strong>fronteiras (Restrições)</strong> e os <strong>resultados (Gherkin/DoD)</strong>, e deixa a IA descobrir a implementação.</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--accent-sky); flex-shrink: 0;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span>Um bom prompt inverte o controle: você define as <strong>fronteiras (Restrições)</strong> e os <strong>resultados (Gherkin/DoD)</strong>, e deixa a IA descobrir a implementação.</span>
         </div>
       </div>
     </section>
