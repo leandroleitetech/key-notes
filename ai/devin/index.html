@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workshop Virtual Comunidade Devin | Leandro Leite</title>
+  <meta name="description" content="Workshop Virtual Comunidade Devin - Engenharia de Software Aumentada por IA e Agentes Autônomos por Leandro Leite">
+  
+  <!-- Google Fonts: Inter & Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       DESIGN SYSTEM & CSS VARIABLES (Dark / Light Theme Support)
+       ========================================================================== */
+    :root {
+      /* Dark Theme (Default) */
+      --bg-dark: #07090e;
+      --bg-surface: #0d121f;
+      --bg-card: rgba(18, 24, 38, 0.7);
+      --bg-card-hover: rgba(28, 37, 58, 0.85);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(56, 189, 248, 0.3);
+      
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      
+      --accent-cyan: #06b6d4;
+      --accent-sky: #38bdf8;
+      --accent-purple: #8b5cf6;
+      --accent-violet: #a855f7;
+      --accent-emerald: #10b981;
+      --accent-orange: #ff6200; /* Itaú Brand Orange */
+      --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #8b5cf6 50%, #ec4899 100%);
+      --accent-orange-gradient: linear-gradient(135deg, #ff6200 0%, #f59e0b 100%);
+
+      --topbar-bg: rgba(7, 9, 14, 0.75);
+      --hud-bg: rgba(7, 9, 14, 0.85);
+      --modal-bg: rgba(5, 7, 11, 0.94);
+      --code-bg: #090c14;
+      --code-header-bg: rgba(255, 255, 255, 0.03);
+      --code-border: rgba(255, 255, 255, 0.1);
+      --profile-card-bg: rgba(13, 18, 31, 0.85);
+      --ambient-1: rgba(56, 189, 248, 0.08);
+      --ambient-2: rgba(139, 92, 246, 0.08);
+      --grid-line: rgba(255, 255, 255, 0.02);
+
+      --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      
+      --transition-base: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      --slide-transition: 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    [data-theme="light"] {
+      --bg-dark: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-card: rgba(255, 255, 255, 0.85);
+      --bg-card-hover: rgba(255, 255, 255, 0.98);
+      --border-subtle: rgba(0, 0, 0, 0.08);
+      --border-accent: rgba(14, 165, 233, 0.35);
+      
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      
+      --accent-cyan: #0284c7;
+      --accent-sky: #0284c7;
+      --accent-purple: #7c3aed;
+      --accent-violet: #9333ea;
+      --accent-emerald: #059669;
+      --accent-orange: #ea580c;
+      --accent-gradient: linear-gradient(135deg, #0284c7 0%, #7c3aed 50%, #db2777 100%);
+      --accent-orange-gradient: linear-gradient(135deg, #ea580c 0%, #d97706 100%);
+
+      --topbar-bg: rgba(255, 255, 255, 0.82);
+      --hud-bg: rgba(255, 255, 255, 0.88);
+      --modal-bg: rgba(248, 250, 252, 0.96);
+      --code-bg: #0f172a;
+      --code-header-bg: #1e293b;
+      --code-border: #334155;
+      --profile-card-bg: rgba(255, 255, 255, 0.92);
+      --ambient-1: rgba(56, 189, 248, 0.12);
+      --ambient-2: rgba(139, 92, 246, 0.1);
+      --grid-line: rgba(0, 0, 0, 0.035);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      user-select: none;
+      position: relative;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Ambient Background Mesh */
+    .ambient-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      background: 
+        radial-gradient(circle at 15% 20%, var(--ambient-1) 0%, transparent 40%),
+        radial-gradient(circle at 85% 80%, var(--ambient-2) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(255, 98, 0, 0.02) 0%, transparent 60%);
+      transition: background 0.3s ease;
+    }
+
+    .grid-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ==========================================================================
+       TOP PROGRESS BAR & HEADER
+       ========================================================================== */
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: var(--topbar-bg);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: var(--transition-base);
+    }
+
+    .progress-track {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: rgba(128, 128, 128, 0.1);
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--accent-gradient);
+      transition: width 0.3s ease;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+    }
+
+    .brand-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-heading);
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+    }
+
+    .brand-badge {
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--accent-sky);
+      border: 1px solid var(--border-accent);
+      padding: 2px 8px;
+      border-radius: 9999px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .action-btn {
+      background: rgba(128, 128, 128, 0.08);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition-base);
+    }
+
+    .action-btn:hover {
+      background: rgba(128, 128, 128, 0.16);
+      color: var(--text-primary);
+      border-color: var(--border-accent);
+      transform: translateY(-1px);
+    }
+
+    .slide-counter {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: rgba(128, 128, 128, 0.06);
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .slide-counter span.current {
+      color: var(--accent-sky);
+    }
+
+    /* ==========================================================================
+       SLIDES CONTAINER & TRANSITIONS
+       ========================================================================== */
+    .deck-container {
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 72px 5% 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(50px) scale(0.985);
+      transition: opacity var(--slide-transition), transform var(--slide-transition), visibility var(--slide-transition);
+      pointer-events: none;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0) scale(1);
+      pointer-events: auto;
+    }
+
+    .slide.prev {
+      transform: translateX(-50px) scale(0.985);
+    }
+
+    .slide-content-wrapper {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: center;
+    }
+
+    /* Typography & Titles */
+    .slide-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(139, 92, 246, 0.12);
+      border: 1px solid rgba(139, 92, 246, 0.25);
+      color: var(--accent-purple);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      margin-bottom: 14px;
+      align-self: flex-start;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .slide-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 3.4vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .slide-title .gradient-text {
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .slide-subtitle {
+      font-size: clamp(0.95rem, 1.35vw, 1.2rem);
+      color: var(--text-secondary);
+      line-height: 1.55;
+      max-width: 800px;
+      margin-bottom: 24px;
+    }
+
+    /* Grid Layouts & Cards */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      width: 100%;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      width: 100%;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 22px;
+      backdrop-filter: blur(16px);
+      transition: var(--transition-base);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-accent);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent-sky);
+      margin-bottom: 14px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.9rem;
+      border: 1px solid var(--border-accent);
+    }
+
+    .card-title {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+
+    .card-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* Cover Image Slide */
+    .cover-image-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+    }
+
+    .cover-image-card {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-height: calc(100vh - 160px);
+      max-width: 95%;
+      border-radius: 20px;
+      padding: 4px;
+      background: var(--accent-gradient);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+      transition: var(--transition-base);
+    }
+
+    .cover-image-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 25px 70px rgba(56, 189, 248, 0.35);
+    }
+
+    .cover-image-banner {
+      max-height: calc(100vh - 170px);
+      max-width: 100%;
+      border-radius: 16px;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* ==========================================================================
+       SPEAKER / INTRO PROFILE (Ordered Vertical List Layout)
+       ========================================================================== */
+    .profile-card {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 32px;
+      background: var(--profile-card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 28px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+      align-items: center;
+    }
+
+    .profile-sidebar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      border-right: 1px solid var(--border-subtle);
+      padding-right: 28px;
+      justify-content: center;
+    }
+
+    .avatar-wrapper {
+      position: relative;
+      width: 180px;
+      height: 180px;
+      border-radius: 24px;
+      padding: 4px;
+      background: var(--accent-gradient);
+      margin-bottom: 16px;
+      box-shadow: 0 12px 30px rgba(56, 189, 248, 0.35);
+      transition: var(--transition-base);
+    }
+
+    .avatar-wrapper:hover {
+      transform: scale(1.02);
+    }
+
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      object-fit: cover;
+      object-position: center top;
+      background: #1e293b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .speaker-name {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 3px;
+    }
+
+    .speaker-role {
+      font-size: 0.8rem;
+      color: var(--accent-sky);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .social-pills {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      width: 100%;
+    }
+
+    .social-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(128, 128, 128, 0.06);
+      border: 1px solid var(--border-subtle);
+      padding: 6px 12px;
+      border-radius: 8px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      transition: var(--transition-base);
+    }
+
+    .social-pill:hover {
+      background: rgba(56, 189, 248, 0.12);
+      border-color: var(--border-accent);
+      color: var(--text-primary);
+      transform: translateX(2px);
+    }
+
+    /* Vertical Ordered List */
+    .bio-vertical-list {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      justify-content: center;
+    }
+
+    .bio-list-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(128, 128, 128, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 10px 16px;
+      transition: var(--transition-base);
+    }
+
+    .bio-list-row:hover {
+      background: rgba(128, 128, 128, 0.08);
+      border-color: var(--border-accent);
+      transform: translateX(3px);
+    }
+
+    .bio-num {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent-sky);
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid var(--border-accent);
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .bio-content {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+      flex: 1;
+    }
+
+    .bio-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+      font-weight: 700;
+      min-width: 140px;
+    }
+
+    .bio-value {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .itau-badge {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255, 98, 0, 0.12);
+      border: 1px solid rgba(255, 98, 0, 0.3);
+      color: var(--accent-orange);
+      padding: 2px 7px;
+      border-radius: 5px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .soujava-badge {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #ef4444;
+      padding: 2px 7px;
+      border-radius: 5px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    /* ==========================================================================
+       CODE & COPYABLE SNIPPET BOX
+       ========================================================================== */
+    .code-box {
+      background: var(--code-bg);
+      border: 1px solid var(--code-border);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-top: 14px;
+      position: relative;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    }
+
+    .code-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 16px;
+      background: var(--code-header-bg);
+      border-bottom: 1px solid var(--code-border);
+    }
+
+    .code-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .code-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .code-dot.red { background: #ef4444; }
+    .code-dot.yellow { background: #eab308; }
+    .code-dot.green { background: #22c55e; }
+
+    .code-lang {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .copy-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--border-subtle);
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: var(--transition-base);
+    }
+
+    .copy-btn:hover {
+      background: rgba(56, 189, 248, 0.25);
+      color: var(--accent-sky);
+      border-color: rgba(56, 189, 248, 0.5);
+    }
+
+    .copy-btn.copied {
+      background: rgba(16, 185, 129, 0.25);
+      color: var(--accent-emerald);
+      border-color: rgba(16, 185, 129, 0.5);
+    }
+
+    pre.code-content {
+      padding: 16px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: #f1f5f9;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      user-select: text;
+    }
+
+    /* ==========================================================================
+       BOTTOM NAVIGATION HUD
+       ========================================================================== */
+    .bottom-hud {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: var(--hud-bg);
+      border-top: 1px solid var(--border-subtle);
+      transition: var(--transition-base);
+    }
+
+    .hud-left, .hud-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hud-keys-hint {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .kbd-chip {
+      background: rgba(128, 128, 128, 0.12);
+      border: 1px solid var(--border-subtle);
+      border-bottom-width: 2px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-secondary);
+    }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: rgba(128, 128, 128, 0.08);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition-base);
+    }
+
+    .nav-btn:hover:not(:disabled) {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: var(--border-accent);
+      color: var(--accent-sky);
+      transform: scale(1.05);
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    /* ==========================================================================
+       MODALS & OVERVIEW DRAWER (Overview Grid & Speaker Notes)
+       ========================================================================== */
+    .overview-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: var(--modal-bg);
+      backdrop-filter: blur(24px);
+      z-index: 100;
+      display: none;
+      flex-direction: column;
+      padding: 40px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .overview-modal.open {
+      display: flex;
+      opacity: 1;
+    }
+
+    .overview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+      overflow-y: auto;
+      padding-bottom: 30px;
+    }
+
+    .thumb-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 16px;
+      cursor: pointer;
+      transition: var(--transition-base);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .thumb-card:hover, .thumb-card.active {
+      border-color: var(--accent-sky);
+      background: rgba(56, 189, 248, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .thumb-num {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent-sky);
+      font-weight: 700;
+    }
+
+    .thumb-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    /* Speaker Notes Drawer */
+    .notes-drawer {
+      position: fixed;
+      bottom: 64px;
+      right: 24px;
+      width: 380px;
+      max-height: 280px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-accent);
+      border-radius: 16px;
+      padding: 18px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      z-index: 60;
+      display: none;
+      flex-direction: column;
+    }
+
+    .notes-drawer.open {
+      display: flex;
+    }
+
+    .notes-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent-sky);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .notes-body {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      overflow-y: auto;
+    }
+
+    /* Blank Screen Mode (Press B or W) */
+    .blank-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 999;
+      display: none;
+    }
+
+    .blank-screen.black {
+      display: block;
+      background: #000;
+    }
+
+    .blank-screen.white {
+      display: block;
+      background: #fff;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .profile-card {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+      .profile-sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--border-subtle);
+        padding-right: 0;
+        padding-bottom: 20px;
+      }
+      .bio-label {
+        min-width: 110px;
+      }
+      .grid-2, .grid-3 {
+        grid-template-columns: 1fr;
+      }
+      .hud-keys-hint {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient background elements -->
+  <div class="ambient-bg"></div>
+  <div class="grid-overlay"></div>
+
+  <!-- Blank Screen Overlay for Presentations -->
+  <div id="blankScreen" class="blank-screen"></div>
+
+  <!-- ==========================================================================
+       TOP BAR & PROGRESS
+       ========================================================================== -->
+  <header class="top-bar">
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <div class="brand-title">
+      <span>Leandro Leite</span>
+      <span class="brand-badge">Devin Workshop</span>
+    </div>
+
+    <div class="top-actions">
+      <div class="slide-counter">
+        <span class="current" id="currentSlideNum">01</span> / <span id="totalSlidesNum">08</span>
+      </div>
+
+      <!-- Theme Toggle (Light / Dark) -->
+      <button class="action-btn" id="btnTheme" title="Alternar Modo Claro/Escuro (Tecla T)">
+        <svg id="themeIconDark" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg id="themeIconLight" style="display:none;" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <span id="themeLabel">Tema (T)</span>
+      </button>
+
+      <button class="action-btn" id="btnNotes" title="Anotações do Apresentador (Tecla S)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        Notas (S)
+      </button>
+
+      <button class="action-btn" id="btnOverview" title="Visão Geral dos Slides (Tecla O ou Esc)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Visão Geral (O)
+      </button>
+
+      <button class="action-btn" id="btnFullscreen" title="Tela Cheia (Tecla F)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+        Expandir (F)
+      </button>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       SLIDES DECK CONTAINER
+       ========================================================================== -->
+  <main class="deck-container" id="deckContainer">
+
+    <!-- SLIDE 1: CAPA DO EVENTO (FLYER / BANNER OFICIAL) -->
+    <section class="slide active" data-title="Capa do Evento" data-notes="Capa oficial do Workshop da Comunidade Devin. Slide de abertura enquanto os participantes chegam.">
+      <div class="slide-content-wrapper">
+        <div class="cover-image-wrapper">
+          <div class="cover-image-card">
+            <img src="./assets/capa-evento.jpeg" alt="Capa Oficial do Evento - Workshop Devin" class="cover-image-banner" onerror="this.src='./capa-evento.jpeg'">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 2: ABERTURA DO WORKSHOP -->
+    <section class="slide" data-title="Abertura do Workshop" data-notes="Boas-vindas à comunidade Devin! Introduzir o objetivo do workshop: entender a evolução dos agentes de IA e como nos tornamos engenheiros aumentados por IA.">
+      <div class="slide-content-wrapper" style="text-align: center; align-items: center;">
+        <span class="slide-tag">Workshop Exclusivo • Comunidade Devin</span>
+        <h1 class="slide-title" style="font-size: clamp(2.4rem, 4.5vw, 4rem); max-width: 950px;">
+          Workshop Virtual <br>
+          <span class="gradient-text">Comunidade Devin</span>
+        </h1>
+        <p class="slide-subtitle" style="text-align: center; max-width: 720px;">
+          Engenharia de Software Aumentada por IA & Agentes Autônomos na Prática. 
+          Como planejar, instruir e acelerar entregas com autonomia real.
+        </p>
+
+        <div style="display: flex; gap: 16px; align-items: center; justify-content: center; margin-top: 10px;">
+          <div style="display: flex; align-items: center; gap: 10px; background: rgba(128,128,128,0.08); padding: 8px 18px; border-radius: 9999px; border: 1px solid var(--border-subtle);">
+            <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--accent-emerald); box-shadow: 0 0 8px var(--accent-emerald);"></div>
+            <span style="font-size: 0.9rem; font-weight: 600; color: var(--text-primary);">Apresentado por Leandro Leite</span>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 10px; margin-top: 28px; flex-wrap: wrap; justify-content: center;">
+          <span class="brand-badge">#DevinAI</span>
+          <span class="brand-badge">#AutonomousAgents</span>
+          <span class="brand-badge">#AIAugmentedEngineer</span>
+          <span class="brand-badge">#SoftwareEngineering</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3: SOBRE MIM (VERTICAL ORDERED LIST) -->
+    <section class="slide" data-title="Sobre Mim" data-notes="Trajetória: Engenheiro de Software no Itaú Unibanco, Coordenador SouJava, dedicação a AI-Augmented Engineering, 25 anos, casado, pai de uma bebê e criador de cavalos.">
+      <div class="slide-content-wrapper">
+        <span class="slide-tag">Apresentação do Orador</span>
+        <h2 class="slide-title">Prazer, sou o <span class="gradient-text">Leandro Leite</span></h2>
+        
+        <div class="profile-card">
+          <!-- Profile Sidebar -->
+          <div class="profile-sidebar">
+            <div class="avatar-wrapper">
+              <img src="./assets/profile.jpeg" alt="Leandro Leite" class="avatar-img" onerror="this.outerHTML='<div class=\'avatar-img\'>LL</div>'">
+            </div>
+            <h3 class="speaker-name">Leandro Leite</h3>
+            <p class="speaker-role">AI-Augmented Engineer & Palestrante</p>
+            
+            <div class="social-pills">
+              <a href="https://linkedin.com/in/leandroleitetech" target="_blank" rel="noopener noreferrer" class="social-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                <span>in/leandroleitetech</span>
+              </a>
+              <a href="https://leandroleitetech.com" target="_blank" rel="noopener noreferrer" class="social-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                <span>leandroleitetech.com</span>
+              </a>
+              <a href="https://github.com/leandroleitetech" target="_blank" rel="noopener noreferrer" class="social-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                <span>github/leandroleitetech</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Main Details: Vertical Ordered List -->
+          <div class="bio-vertical-list">
+            
+            <div class="bio-list-row">
+              <span class="bio-num">01</span>
+              <div class="bio-content">
+                <span class="bio-label">Atuação Profissional</span>
+                <span class="bio-value">Engenheiro de Software <span class="itau-badge">Itaú Unibanco</span></span>
+              </div>
+            </div>
+
+            <div class="bio-list-row">
+              <span class="bio-num">02</span>
+              <div class="bio-content">
+                <span class="bio-label">Comunidade Técnica</span>
+                <span class="bio-value">Coordenador no <span class="soujava-badge">SouJava</span> (Sociedade de Usuários Java)</span>
+              </div>
+            </div>
+
+            <div class="bio-list-row">
+              <span class="bio-num">03</span>
+              <div class="bio-content">
+                <span class="bio-label">Especialidade & Foco</span>
+                <span class="bio-value">AI-Augmented Engineering & Palestrante de Tecnologia</span>
+              </div>
+            </div>
+
+            <div class="bio-list-row">
+              <span class="bio-num">04</span>
+              <div class="bio-content">
+                <span class="bio-label">Idade</span>
+                <span class="bio-value">25 anos</span>
+              </div>
+            </div>
+
+            <div class="bio-list-row">
+              <span class="bio-num">05</span>
+              <div class="bio-content">
+                <span class="bio-label">Família</span>
+                <span class="bio-value">Casado & Pai orgulhoso de uma bebezinha</span>
+              </div>
+            </div>
+
+            <div class="bio-list-row">
+              <span class="bio-num">06</span>
+              <div class="bio-content">
+                <span class="bio-label">Estilo de Vida</span>
+                <span class="bio-value">Criador de cavalos & Entusiasta do campo</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3: AGENDA -->
+    <section class="slide" data-title="Agenda do Workshop" data-notes="Apresentar o roteiro do dia para alinhar expectativas da comunidade. Destacar a parte prática com o Devin.">
+      <div class="slide-content-wrapper">
+        <span class="slide-tag">Roteiro do Workshop</span>
+        <h2 class="slide-title">O que vamos <span class="gradient-text">explorar hoje</span></h2>
+        <p class="slide-subtitle">Uma jornada estruturada da teoria à prática com agentes autônomos.</p>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-icon">01</div>
+            <h3 class="card-title">A Nova Era dos Agentes</h3>
+            <p class="card-desc">Copilots vs Agentes Autônomos. Por que o Devin representa uma mudança de paradigma na engenharia.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">02</div>
+            <h3 class="card-title">Anatomia do Devin</h3>
+            <p class="card-desc">Como funcionam o loop de raciocínio, terminal seguro, navegador interativo e editor de código em sandbox.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">03</div>
+            <h3 class="card-title">AI-Augmented Engineer</h3>
+            <p class="card-desc">Como o papel do desenvolvedor evolui de escritor de linhas para arquiteto, orquestrador e revisor crítico.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">04</div>
+            <h3 class="card-title">Prompting & Playbooks</h3>
+            <p class="card-desc">Técnicas avançadas para instruir o Devin com clareza, critérios de aceite e testes automatizados.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">05</div>
+            <h3 class="card-title">Casos de Uso Reais</h3>
+            <p class="card-desc">Migrações de versão, refatoração em larga escala, correção de bugs complexos e novos microsserviços.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">06</div>
+            <h3 class="card-title">Live Demo & Q&A</h3>
+            <p class="card-desc">Mão na massa: atribuindo uma tarefa real ao Devin, acompanhando a execução e abrindo para perguntas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4: COPILOT VS AGENTE AUTÔNOMO -->
+    <section class="slide" data-title="Copilot vs Devin" data-notes="Enfatizar a diferença fundamental: copiloto é reativo e linha por linha; agente autônomo executa um plano de ponta a ponta com feedback de erros.">
+      <div class="slide-content-wrapper">
+        <span class="slide-tag">Comparativo de Gerações</span>
+        <h2 class="slide-title">De Assistentes a <span class="gradient-text">Agentes Autônomos</span></h2>
+        <p class="slide-subtitle">Entenda o salto geracional entre sugestão de código e execução completa de engenharia.</p>
+
+        <div class="grid-2">
+          <!-- Copilot Box -->
+          <div class="card" style="border-left: 4px solid var(--text-muted);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <h3 class="card-title" style="margin-bottom: 0;">AI Copilots (1ª Geração)</h3>
+              <span style="font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono);">Autocomplete</span>
+            </div>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 0.9rem; color: var(--text-secondary);">
+              <li style="display: flex; gap: 10px;">• <strong>Escopo Curto:</strong> Sugere linhas ou blocos isolados no editor.</li>
+              <li style="display: flex; gap: 10px;">• <strong>Sem Acesso a Ferramentas:</strong> Não roda testes nem executa comandos de terminal.</li>
+              <li style="display: flex; gap: 10px;">• <strong>Sem Feedback Loop:</strong> Não sabe se o código compilou ou falhou.</li>
+              <li style="display: flex; gap: 10px;">• <strong>Humano é o Executor:</strong> Você faz o commit, roda os testes e corrige erros manuais.</li>
+            </ul>
+          </div>
+
+          <!-- Devin Box -->
+          <div class="card" style="border-left: 4px solid var(--accent-sky); background: rgba(56, 189, 248, 0.04);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <h3 class="card-title" style="color: var(--accent-sky); margin-bottom: 0;">Devin & Agentes (2ª Geração)</h3>
+              <span class="brand-badge">Autonomia Real</span>
+            </div>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 0.9rem; color: var(--text-secondary);">
+              <li style="display: flex; gap: 10px;">• <strong>Planejamento Autônomo:</strong> Cria e segue plano estruturado passo a passo.</li>
+              <li style="display: flex; gap: 10px;">• <strong>Ambiente Completo:</strong> Terminal seguro, editor, navegador e sandbox.</li>
+              <li style="display: flex; gap: 10px;">• <strong>Auto-Correção:</strong> Executa a aplicação, analisa logs e corrige falhas sozinho.</li>
+              <li style="display: flex; gap: 10px;">• <strong>Engenheiro é o Arquiteto:</strong> Você define o objetivo estratégico e revisa o PR pronto.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5: PLAYBOOK DE PROMPTING (COM CONTEÚDO COPIÁVEL) -->
+    <section class="slide" data-title="Playbook & Prompts" data-notes="Mostrar como passar tarefas com precisão para o Devin. Ensinar os participantes a usar o botão 'Copiar' para testar em suas sessões.">
+      <div class="slide-content-wrapper">
+        <span class="slide-tag">Boas Práticas & Prompting</span>
+        <h2 class="slide-title">Instruindo o Devin com <span class="gradient-text">Alta Eficácia</span></h2>
+        <p class="slide-subtitle">A clareza do contexto define o sucesso da tarefa. Veja o template recomendado:</p>
+
+        <div class="code-box">
+          <div class="code-header">
+            <div class="code-dots">
+              <div class="code-dot red"></div>
+              <div class="code-dot yellow"></div>
+              <div class="code-dot green"></div>
+            </div>
+            <span class="code-lang">template-prompt-devin.md</span>
+            <button class="copy-btn" onclick="copySnippet(this)">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span>Copiar Prompt</span>
+            </button>
+          </div>
+          <pre class="code-content"><code>### 🎯 OBJETIVO DA TAREFA
+Migrar o microsserviço de pagamentos para Java 21 & Spring Boot 3.3 mantendo 100% de compatibilidade com a API legada.
+
+### 📋 CRITÉRIOS DE ACEITE
+1. Atualizar o pom.xml com as versões mais recentes das dependências estáveis.
+2. Substituir todas as importações javax.* por jakarta.*.
+3. Executar a suite de testes unitários (`mvn clean test`) e garantir zero falhas.
+4. Gerar um relatório detalhando breaking changes resolvidas e abrir Pull Request.
+
+### ⚠️ RESTRIÇÕES & AMBIENTE
+- Não alterar contratos de DTOs públicos existentes.
+- Utilizar branch: `feature/migration-java21-spring33`.</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6: O PAPEL DO ENGENHEIRO AUMENTADO -->
+    <section class="slide" data-title="O Engenheiro AI-Augmented" data-notes="Frisar que a IA não substitui o engenheiro sênior, mas multiplica sua capacidade em 10x quando usada com rigor técnico e arquitetura sólida.">
+      <div class="slide-content-wrapper">
+        <span class="slide-tag">Evolução de Carreira</span>
+        <h2 class="slide-title">O Engenheiro <span class="gradient-text">AI-Augmented</span></h2>
+        <p class="slide-subtitle">Como as habilidades do desenvolvedor mudam no dia a dia com agentes autônomos.</p>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-icon">01</div>
+            <h3 class="card-title">Arquitetura & Design</h3>
+            <p class="card-desc">Foco total em decisões estratégicas de alto nível: domínios DDD, resiliência, segurança e trade-offs arquiteturais.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">02</div>
+            <h3 class="card-title">Definição de Contexto</h3>
+            <p class="card-desc">Engenharia de requisitos precisa: escrever especificações claras, contratos de API e testes automatizados de ponta a ponta.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">03</div>
+            <h3 class="card-title">Supervisão Crítica</h3>
+            <p class="card-desc">Code review rigoroso, auditoria de segurança, validação de performance e garantia de conformidade corporativa.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7: CONCLUSÃO & CONTATOS -->
+    <section class="slide" data-title="Conclusão & Conexões" data-notes="Agradecer a todos, abrir para perguntas e disponibilizar os links do LinkedIn, site e comunidade SouJava.">
+      <div class="slide-content-wrapper" style="text-align: center; align-items: center;">
+        <span class="slide-tag">Encerramento & Q&A</span>
+        <h2 class="slide-title" style="font-size: clamp(2.2rem, 4vw, 3.5rem);">
+          Vamos construir o futuro <br>
+          <span class="gradient-text">da Engenharia de Software!</span>
+        </h2>
+        <p class="slide-subtitle" style="text-align: center; max-width: 650px;">
+          Obrigado pela presença no Workshop da Comunidade Devin. Hora de colocar as mãos no código e testar seus agentes!
+        </p>
+
+        <div class="card" style="max-width: 700px; width: 100%; padding: 26px; border: 1px solid var(--border-accent);">
+          <h3 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 16px; color: var(--text-primary);">Conecte-se comigo</h3>
+          
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
+            <a href="https://linkedin.com/in/leandroleitetech" target="_blank" rel="noopener noreferrer" class="social-pill" style="justify-content: center; padding: 10px;">
+              <strong>LinkedIn</strong>
+            </a>
+            <a href="https://leandroleitetech.com" target="_blank" rel="noopener noreferrer" class="social-pill" style="justify-content: center; padding: 10px;">
+              <strong>Website Oficial</strong>
+            </a>
+            <a href="https://soujava.org.br" target="_blank" rel="noopener noreferrer" class="social-pill" style="justify-content: center; padding: 10px;">
+              <strong>Comunidade SouJava</strong>
+            </a>
+          </div>
+        </div>
+
+        <p style="margin-top: 22px; font-size: 0.85rem; color: var(--text-muted); font-family: var(--font-mono);">
+          Dúvidas, perguntas ou trocas de ideias? Pergunte agora!
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       SPEAKER NOTES DRAWER
+       ========================================================================== -->
+  <div class="notes-drawer" id="notesDrawer">
+    <div class="notes-header">
+      <span>Notas do Apresentador</span>
+      <button onclick="toggleNotes()" style="background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:1rem;">✕</button>
+    </div>
+    <div class="notes-body" id="notesBody">
+      Carregando notas...
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       OVERVIEW MODAL (GRID VIEW)
+       ========================================================================== -->
+  <div class="overview-modal" id="overviewModal">
+    <div class="overview-header">
+      <h2 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--text-primary);">Visão Geral dos Slides</h2>
+      <button class="action-btn" onclick="toggleOverview()">Fechar (Esc)</button>
+    </div>
+    <div class="overview-grid" id="overviewGrid">
+      <!-- Generated via JS -->
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       BOTTOM HUD NAVIGATION
+       ========================================================================== -->
+  <footer class="bottom-hud">
+    <div class="hud-left">
+      <div class="hud-keys-hint">
+        <span class="kbd-chip">←</span>
+        <span class="kbd-chip">→</span> Navegar
+      </div>
+      <div class="hud-keys-hint">
+        <span class="kbd-chip">T</span> Tema
+      </div>
+      <div class="hud-keys-hint">
+        <span class="kbd-chip">F</span> Tela Cheia
+      </div>
+      <div class="hud-keys-hint">
+        <span class="kbd-chip">B</span> Black Screen
+      </div>
+      <div class="hud-keys-hint">
+        <span class="kbd-chip">S</span> Notas
+      </div>
+    </div>
+
+    <div class="nav-controls">
+      <button class="nav-btn" id="btnPrev" title="Slide Anterior (Seta Esquerda / PageUp)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+
+      <button class="nav-btn" id="btnNext" title="Próximo Slide (Seta Direita / PageDown / Espaço)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+
+    <div class="hud-right">
+      <span style="font-size: 0.75rem; color: var(--text-muted);">
+        Leandro Leite • 2026
+      </span>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       JAVASCRIPT ENGINE (Presenter Navigation & Shortcuts)
+       ========================================================================== -->
+  <script>
+    (function() {
+      'use strict';
+
+      const slides = Array.from(document.querySelectorAll('.slide'));
+      const totalSlides = slides.length;
+      let currentIndex = 0;
+
+      // DOM Elements
+      const currentSlideNumEl = document.getElementById('currentSlideNum');
+      const totalSlidesNumEl = document.getElementById('totalSlidesNum');
+      const progressFillEl = document.getElementById('progressFill');
+      const btnPrev = document.getElementById('btnPrev');
+      const btnNext = document.getElementById('btnNext');
+      const btnFullscreen = document.getElementById('btnFullscreen');
+      const btnNotes = document.getElementById('btnNotes');
+      const btnOverview = document.getElementById('btnOverview');
+      const btnTheme = document.getElementById('btnTheme');
+      const themeIconDark = document.getElementById('themeIconDark');
+      const themeIconLight = document.getElementById('themeIconLight');
+      const notesDrawer = document.getElementById('notesDrawer');
+      const notesBody = document.getElementById('notesBody');
+      const overviewModal = document.getElementById('overviewModal');
+      const overviewGrid = document.getElementById('overviewGrid');
+      const blankScreen = document.getElementById('blankScreen');
+
+      // Theme Management (Dark / Light)
+      function initTheme() {
+        const savedTheme = localStorage.getItem('deck_theme') || 'dark';
+        applyTheme(savedTheme);
+      }
+
+      function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        if (theme === 'light') {
+          themeIconDark.style.display = 'none';
+          themeIconLight.style.display = 'block';
+        } else {
+          themeIconDark.style.display = 'block';
+          themeIconLight.style.display = 'none';
+        }
+        localStorage.setItem('deck_theme', theme);
+      }
+
+      function toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+        const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        applyTheme(nextTheme);
+      }
+      window.toggleTheme = toggleTheme;
+
+      // Initialize slide deck
+      totalSlidesNumEl.textContent = String(totalSlides).padStart(2, '0');
+      initTheme();
+      buildOverviewGrid();
+      updateSlide(0);
+
+      // Function to go to slide
+      function updateSlide(index) {
+        if (index < 0 || index >= totalSlides) return;
+        
+        slides.forEach((slide, i) => {
+          slide.classList.remove('active', 'prev');
+          if (i === index) {
+            slide.classList.add('active');
+          } else if (i < index) {
+            slide.classList.add('prev');
+          }
+        });
+
+        currentIndex = index;
+        currentSlideNumEl.textContent = String(currentIndex + 1).padStart(2, '0');
+        
+        // Update Progress Bar
+        const progress = totalSlides > 1 ? (currentIndex / (totalSlides - 1)) * 100 : 100;
+        progressFillEl.style.width = `${progress}%`;
+
+        // Update Prev/Next buttons
+        btnPrev.disabled = currentIndex === 0;
+        btnNext.disabled = currentIndex === totalSlides - 1;
+
+        // Update Notes
+        const notes = slides[currentIndex].getAttribute('data-notes') || 'Sem notas para este slide.';
+        notesBody.innerHTML = `<p>${notes}</p>`;
+
+        // Update overview active state
+        document.querySelectorAll('.thumb-card').forEach((thumb, i) => {
+          thumb.classList.toggle('active', i === currentIndex);
+        });
+
+        // Store current slide in URL hash for easy bookmarking
+        window.location.hash = `slide-${currentIndex + 1}`;
+      }
+
+      function nextSlide() {
+        if (currentIndex < totalSlides - 1) updateSlide(currentIndex + 1);
+      }
+
+      function prevSlide() {
+        if (currentIndex > 0) updateSlide(currentIndex - 1);
+      }
+
+      // Fullscreen handler
+      function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(err => console.error(err));
+        } else {
+          if (document.exitFullscreen) document.exitFullscreen();
+        }
+      }
+
+      // Notes drawer toggle
+      function toggleNotes() {
+        notesDrawer.classList.toggle('open');
+      }
+      window.toggleNotes = toggleNotes;
+
+      // Overview drawer toggle
+      function toggleOverview() {
+        overviewModal.classList.toggle('open');
+      }
+      window.toggleOverview = toggleOverview;
+
+      // Blank screen toggle (Black 'B' / White 'W')
+      function toggleBlankScreen(color) {
+        if (blankScreen.classList.contains(color)) {
+          blankScreen.className = 'blank-screen';
+        } else {
+          blankScreen.className = `blank-screen ${color}`;
+        }
+      }
+
+      // Build Overview Thumbnails
+      function buildOverviewGrid() {
+        overviewGrid.innerHTML = '';
+        slides.forEach((slide, i) => {
+          const title = slide.getAttribute('data-title') || `Slide ${i + 1}`;
+          const card = document.createElement('div');
+          card.className = `thumb-card ${i === currentIndex ? 'active' : ''}`;
+          card.innerHTML = `
+            <span class="thumb-num">Slide ${String(i + 1).padStart(2, '0')}</span>
+            <div class="thumb-title">${title}</div>
+          `;
+          card.onclick = () => {
+            updateSlide(i);
+            overviewModal.classList.remove('open');
+          };
+          overviewGrid.appendChild(card);
+        });
+      }
+
+      // ==========================================================================
+      // KEYBOARD & CLICKER CONTROLS
+      // ==========================================================================
+      window.addEventListener('keydown', (e) => {
+        // Ignore shortcuts if focusing an editable element or textarea
+        if (['input', 'textarea'].includes(document.activeElement.tagName.toLowerCase())) return;
+
+        switch (e.key) {
+          case 'ArrowRight':
+          case 'ArrowDown':
+          case 'PageDown':
+          case ' ':
+          case 'Enter':
+          case 'n':
+          case 'N':
+            e.preventDefault();
+            nextSlide();
+            break;
+
+          case 'ArrowLeft':
+          case 'ArrowUp':
+          case 'PageUp':
+          case 'Backspace':
+          case 'p':
+          case 'P':
+            e.preventDefault();
+            prevSlide();
+            break;
+
+          case 'Home':
+            e.preventDefault();
+            updateSlide(0);
+            break;
+
+          case 'End':
+            e.preventDefault();
+            updateSlide(totalSlides - 1);
+            break;
+
+          case 't':
+          case 'T':
+            e.preventDefault();
+            toggleTheme();
+            break;
+
+          case 'f':
+          case 'F':
+            e.preventDefault();
+            toggleFullscreen();
+            break;
+
+          case 's':
+          case 'S':
+            e.preventDefault();
+            toggleNotes();
+            break;
+
+          case 'o':
+          case 'O':
+            e.preventDefault();
+            toggleOverview();
+            break;
+
+          case 'Escape':
+            if (overviewModal.classList.contains('open')) {
+              overviewModal.classList.remove('open');
+            } else if (blankScreen.className !== 'blank-screen') {
+              blankScreen.className = 'blank-screen';
+            }
+            break;
+
+          case 'b':
+          case 'B':
+            toggleBlankScreen('black');
+            break;
+
+          case 'w':
+          case 'W':
+            toggleBlankScreen('white');
+            break;
+        }
+      });
+
+      // Button listeners
+      btnPrev.addEventListener('click', prevSlide);
+      btnNext.addEventListener('click', nextSlide);
+      btnFullscreen.addEventListener('click', toggleFullscreen);
+      btnNotes.addEventListener('click', toggleNotes);
+      btnOverview.addEventListener('click', toggleOverview);
+      btnTheme.addEventListener('click', toggleTheme);
+
+      // Touch / Swipe support for tablets
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      document.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      document.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const diff = touchEndX - touchStartX;
+        if (Math.abs(diff) > 50) {
+          if (diff < 0) nextSlide();
+          else prevSlide();
+        }
+      }, { passive: true });
+
+      // Click to Copy Snippet
+      window.copySnippet = function(button) {
+        const code = button.closest('.code-box').querySelector('code').innerText;
+        navigator.clipboard.writeText(code).then(() => {
+          button.classList.add('copied');
+          button.querySelector('span').textContent = 'Copiado!';
+          setTimeout(() => {
+            button.classList.remove('copied');
+            button.querySelector('span').textContent = 'Copiar Prompt';
+          }, 2000);
+        }).catch(err => {
+          console.error('Falha ao copiar:', err);
+        });
+      };
+
+      // Hash Navigation on Load
+      const initialHash = window.location.hash;
+      if (initialHash && initialHash.startsWith('#slide-')) {
+        const targetIndex = parseInt(initialHash.replace('#slide-', ''), 10) - 1;
+        if (!isNaN(targetIndex) && targetIndex >= 0 && targetIndex < totalSlides) {
+          updateSlide(targetIndex);
+        }
+      }
+
+    })();
+  </script>
+</body>
+</html>

@@ -29,7 +29,7 @@ As apresentações estão disponíveis em diversos formatos:
 
 | Apresentação | Formatos | Descrição |
 | :--- | :--- | :--- |
-| **Devin & Agentes Autônomos** | [Pasta](./ai/devin/) | Visão geral sobre engenharia de software assistida por IA, agentes autônomos e o futuro do desenvolvimento. |
+| **Workshop Virtual Comunidade Devin** | [`HTML Slides`](./ai/devin/index.html) • [Info](./ai/devin/README.md) | Workshop prático sobre Engenharia Aumentada por IA, anatomia do Devin, copilots vs agentes autônomos e playbooks de prompting. |
 
 *(Novas apresentações e materiais são adicionados continuamente)*
 
