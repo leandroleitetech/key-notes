@@ -631,6 +631,148 @@
     }
 
     /* ==========================================================================
+       DEVIN OVERVIEW & SDLC FLOW (SLIDE 5)
+       ========================================================================== */
+    .devin-highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 16px;
+      width: 100%;
+    }
+
+    .highlight-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 14px 16px;
+      backdrop-filter: blur(16px);
+      transition: var(--transition-base);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .highlight-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-accent);
+      transform: translateY(-2px);
+    }
+
+    .highlight-title {
+      font-family: var(--font-heading);
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--accent-sky);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .highlight-desc {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    .sdlc-container {
+      background: var(--profile-card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 16px 20px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .sdlc-header-tag {
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-purple);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .sdlc-flow-track {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+      position: relative;
+    }
+
+    .sdlc-step {
+      background: rgba(128, 128, 128, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 10px 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: var(--transition-base);
+      position: relative;
+    }
+
+    .sdlc-step:hover {
+      background: rgba(56, 189, 248, 0.08);
+      border-color: var(--border-accent);
+      transform: translateY(-2px);
+    }
+
+    .sdlc-step-badge {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid var(--border-accent);
+      color: var(--accent-sky);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 6px;
+    }
+
+    .sdlc-step-title {
+      font-family: var(--font-heading);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+
+    .sdlc-step-desc {
+      font-size: 0.68rem;
+      color: var(--text-secondary);
+      line-height: 1.35;
+    }
+
+    .sdlc-banner-callout {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(90deg, rgba(56, 189, 248, 0.08) 0%, rgba(139, 92, 246, 0.12) 50%, rgba(255, 98, 0, 0.08) 100%);
+      border: 1px solid var(--border-accent);
+      border-radius: 10px;
+      padding: 8px 14px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-align: center;
+    }
+
+    /* ==========================================================================
        CODE & COPYABLE SNIPPET BOX
        ========================================================================== */
     .code-box {
@@ -1020,7 +1162,7 @@
           <span class="gradient-text">Comunidade Devin</span>
         </h1>
         <p class="slide-subtitle" style="text-align: center; max-width: 720px;">
-          Engenharia de Software Aumentada por IA & Agentes Autônomos na Prática. 
+          Agentes Autônomos na Prática.
           Como planejar, instruir e acelerar entregas com autonomia real.
         </p>
 
@@ -1171,40 +1313,95 @@
       </div>
     </section>
 
-    <!-- SLIDE 4: COPILOT VS AGENTE AUTÔNOMO -->
-    <section class="slide" data-title="Copilot vs Devin" data-notes="Enfatizar a diferença fundamental: copiloto é reativo e linha por linha; agente autônomo executa um plano de ponta a ponta com feedback de erros.">
+    <!-- SLIDE 5: O QUE É O DEVIN? (SDLC END-TO-END) -->
+    <section class="slide" data-title="O que é o Devin?" data-notes="Devin não é apenas um autocomplete: é um engenheiro de software autônomo com terminal, browser e feedback loop que atua em todo o ciclo de vida (SDLC) da issue ao PR.">
       <div class="slide-content-wrapper">
-        <span class="slide-tag">Comparativo de Gerações</span>
-        <h2 class="slide-title">De Assistentes a <span class="gradient-text">Agentes Autônomos</span></h2>
-        <p class="slide-subtitle">Entenda o salto geracional entre sugestão de código e execução completa de engenharia.</p>
+        <span class="slide-tag">Visão Geral & Capacidades</span>
+        <h2 class="slide-title">O que é o <span class="gradient-text">Devin?</span></h2>
+        <p class="slide-subtitle">Engenheiro de software autônomo que cobre todo o ciclo de ponta a ponta (SDLC)</p>
 
-        <div class="grid-2">
-          <!-- Copilot Box -->
-          <div class="card" style="border-left: 4px solid var(--text-muted);">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-              <h3 class="card-title" style="margin-bottom: 0;">AI Copilots (1ª Geração)</h3>
-              <span style="font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono);">Autocomplete</span>
-            </div>
-            <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 0.9rem; color: var(--text-secondary);">
-              <li style="display: flex; gap: 10px;">• <strong>Escopo Curto:</strong> Sugere linhas ou blocos isolados no editor.</li>
-              <li style="display: flex; gap: 10px;">• <strong>Sem Acesso a Ferramentas:</strong> Não roda testes nem executa comandos de terminal.</li>
-              <li style="display: flex; gap: 10px;">• <strong>Sem Feedback Loop:</strong> Não sabe se o código compilou ou falhou.</li>
-              <li style="display: flex; gap: 10px;">• <strong>Humano é o Executor:</strong> Você faz o commit, roda os testes e corrige erros manuais.</li>
-            </ul>
+        <!-- Highlights Principais (4 Cards) -->
+        <div class="devin-highlights-grid">
+          <div class="highlight-card">
+            <h3 class="highlight-title">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              Agente Autônomo
+            </h3>
+            <p class="highlight-desc">Não é apenas autocomplete; opera com autonomia, raciocínio e tomada de decisão.</p>
           </div>
 
-          <!-- Devin Box -->
-          <div class="card" style="border-left: 4px solid var(--accent-sky); background: rgba(56, 189, 248, 0.04);">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-              <h3 class="card-title" style="color: var(--accent-sky); margin-bottom: 0;">Devin & Agentes (2ª Geração)</h3>
-              <span class="brand-badge">Autonomia Real</span>
+          <div class="highlight-card">
+            <h3 class="highlight-title">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+              Ambiente Real
+            </h3>
+            <p class="highlight-desc">Acesso nativo a terminal Linux (shell), navegador web, editor de código e Git.</p>
+          </div>
+
+          <div class="highlight-card">
+            <h3 class="highlight-title">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+              Loop de Autocorreção
+            </h3>
+            <p class="highlight-desc">Executa comandos, interpreta logs e stacktraces, detecta falhas e corrige o próprio código até o build passar.</p>
+          </div>
+
+          <div class="highlight-card">
+            <h3 class="highlight-title">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              Supervisão Humana
+            </h3>
+            <p class="highlight-desc"><em>Human-in-the-loop:</em> o desenvolvedor direciona, pausa, revisa e aprova as etapas críticas.</p>
+          </div>
+        </div>
+
+        <!-- Diagrama: O Ciclo de Desenvolvimento (SDLC com Devin) -->
+        <div class="sdlc-container">
+          <div class="sdlc-header-tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Diagrama: O Ciclo de Desenvolvimento (SDLC com Devin)
+          </div>
+
+          <div class="sdlc-flow-track">
+            <div class="sdlc-step">
+              <span class="sdlc-step-badge">1</span>
+              <h4 class="sdlc-step-title">Exploração</h4>
+              <p class="sdlc-step-desc">Leitura de repositórios, análise de dependências e entendimento de issues.</p>
             </div>
-            <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 0.9rem; color: var(--text-secondary);">
-              <li style="display: flex; gap: 10px;">• <strong>Planejamento Autônomo:</strong> Cria e segue plano estruturado passo a passo.</li>
-              <li style="display: flex; gap: 10px;">• <strong>Ambiente Completo:</strong> Terminal seguro, editor, navegador e sandbox.</li>
-              <li style="display: flex; gap: 10px;">• <strong>Auto-Correção:</strong> Executa a aplicação, analisa logs e corrige falhas sozinho.</li>
-              <li style="display: flex; gap: 10px;">• <strong>Engenheiro é o Arquiteto:</strong> Você define o objetivo estratégico e revisa o PR pronto.</li>
-            </ul>
+
+            <div class="sdlc-step">
+              <span class="sdlc-step-badge">2</span>
+              <h4 class="sdlc-step-title">Planejamento</h4>
+              <p class="sdlc-step-desc">Decomposição da tarefa em etapas e definição de arquitetura.</p>
+            </div>
+
+            <div class="sdlc-step">
+              <span class="sdlc-step-badge">3</span>
+              <h4 class="sdlc-step-title">Codificação</h4>
+              <p class="sdlc-step-desc">Implementação de código seguindo convenções do projeto.</p>
+            </div>
+
+            <div class="sdlc-step">
+              <span class="sdlc-step-badge">4</span>
+              <h4 class="sdlc-step-title">Testes & Build</h4>
+              <p class="sdlc-step-desc">Execução de testes unitários/integrados e resolução de quebras.</p>
+            </div>
+
+            <div class="sdlc-step">
+              <span class="sdlc-step-badge">5</span>
+              <h4 class="sdlc-step-title">Review & PR</h4>
+              <p class="sdlc-step-desc">Abertura de Pull Requests estruturados e resposta a code reviews.</p>
+            </div>
+
+            <div class="sdlc-step">
+              <span class="sdlc-step-badge">6</span>
+              <h4 class="sdlc-step-title">Deploy & CI</h4>
+              <p class="sdlc-step-desc">Integração contínua e validação em esteiras de entrega.</p>
+            </div>
+          </div>
+
+          <div class="sdlc-banner-callout">
+            <span>Devin opera de ponta a ponta: <strong>da issue ao Pull Request validado</strong>.</span>
           </div>
         </div>
       </div>

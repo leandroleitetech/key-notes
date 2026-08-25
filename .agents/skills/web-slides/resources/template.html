@@ -628,6 +628,148 @@
       box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
     }
 
+    /* ==========================================================================
+       SDLC FLOW & HIGHLIGHTS (SLIDE PIPELINE)
+       ========================================================================== */
+    .devin-highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 16px;
+      width: 100%;
+    }
+
+    .highlight-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 14px 16px;
+      backdrop-filter: blur(16px);
+      transition: var(--transition-base);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .highlight-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-accent);
+      transform: translateY(-2px);
+    }
+
+    .highlight-title {
+      font-family: var(--font-heading);
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--accent-sky);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .highlight-desc {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    .sdlc-container {
+      background: var(--profile-card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 16px 20px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .sdlc-header-tag {
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-purple);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .sdlc-flow-track {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+      position: relative;
+    }
+
+    .sdlc-step {
+      background: rgba(128, 128, 128, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 10px 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: var(--transition-base);
+      position: relative;
+    }
+
+    .sdlc-step:hover {
+      background: rgba(56, 189, 248, 0.08);
+      border-color: var(--border-accent);
+      transform: translateY(-2px);
+    }
+
+    .sdlc-step-badge {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid var(--border-accent);
+      color: var(--accent-sky);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 6px;
+    }
+
+    .sdlc-step-title {
+      font-family: var(--font-heading);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+
+    .sdlc-step-desc {
+      font-size: 0.68rem;
+      color: var(--text-secondary);
+      line-height: 1.35;
+    }
+
+    .sdlc-banner-callout {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(90deg, rgba(56, 189, 248, 0.08) 0%, rgba(139, 92, 246, 0.12) 50%, rgba(255, 98, 0, 0.08) 100%);
+      border: 1px solid var(--border-accent);
+      border-radius: 10px;
+      padding: 8px 14px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-align: center;
+    }
+
     /* Code Box & Snippet */
     .code-box {
       background: var(--code-bg);
@@ -1029,6 +1171,46 @@
               <span>github.com/leandroleitetech</span>
             </a>
           </div>
+        </div>
+      </div>
+    </section>
+    <!-- SLIDE 4: SDLC & HIGHLIGHTS PIPELINE (EXEMPLO) -->
+    <section class="slide" data-title="Ciclo SDLC" data-notes="Exemplo de fluxo de desenvolvimento ponta a ponta.">
+      <div class="slide-content-wrapper">
+        <span class="slide-tag">Engenharia Autônoma</span>
+        <h2 class="slide-title">Ciclo de Desenvolvimento <span class="gradient-text">(SDLC)</span></h2>
+        <p class="slide-subtitle">Engenharia cobrindo o ciclo de ponta a ponta com supervisão humana.</p>
+
+        <div class="devin-highlights-grid">
+          <div class="highlight-card">
+            <h3 class="highlight-title">Agente Autônomo</h3>
+            <p class="highlight-desc">Opera com autonomia, raciocínio lógico e tomada de decisão.</p>
+          </div>
+          <div class="highlight-card">
+            <h3 class="highlight-title">Ambiente Real</h3>
+            <p class="highlight-desc">Acesso a terminal Linux, navegador web, editor e Git.</p>
+          </div>
+          <div class="highlight-card">
+            <h3 class="highlight-title">Loop de Autocorreção</h3>
+            <p class="highlight-desc">Executa testes, interpreta logs e corrige o próprio código.</p>
+          </div>
+          <div class="highlight-card">
+            <h3 class="highlight-title">Supervisão Humana</h3>
+            <p class="highlight-desc">O desenvolvedor direciona, revisa e aprova as etapas.</p>
+          </div>
+        </div>
+
+        <div class="sdlc-container">
+          <div class="sdlc-header-tag">Fluxo SDLC Contínuo</div>
+          <div class="sdlc-flow-track">
+            <div class="sdlc-step"><span class="sdlc-step-badge">1</span><h4 class="sdlc-step-title">Exploração</h4><p class="sdlc-step-desc">Análise de repo e issues.</p></div>
+            <div class="sdlc-step"><span class="sdlc-step-badge">2</span><h4 class="sdlc-step-title">Planejamento</h4><p class="sdlc-step-desc">Etapas e arquitetura.</p></div>
+            <div class="sdlc-step"><span class="sdlc-step-badge">3</span><h4 class="sdlc-step-title">Codificação</h4><p class="sdlc-step-desc">Implementação limpa.</p></div>
+            <div class="sdlc-step"><span class="sdlc-step-badge">4</span><h4 class="sdlc-step-title">Testes & Build</h4><p class="sdlc-step-desc">Execução de testes.</p></div>
+            <div class="sdlc-step"><span class="sdlc-step-badge">5</span><h4 class="sdlc-step-title">Review & PR</h4><p class="sdlc-step-desc">Abertura de PR.</p></div>
+            <div class="sdlc-step"><span class="sdlc-step-badge">6</span><h4 class="sdlc-step-title">Deploy & CI</h4><p class="sdlc-step-desc">Validação contínua.</p></div>
+          </div>
+          <div class="sdlc-banner-callout"><span>Operação de ponta a ponta: <strong>da issue ao Pull Request validado</strong>.</span></div>
         </div>
       </div>
     </section>
