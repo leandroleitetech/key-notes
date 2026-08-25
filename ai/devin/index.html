@@ -442,112 +442,88 @@
     }
 
     /* ==========================================================================
-       SPEAKER / INTRO PROFILE (Ordered Vertical List Layout)
+       SPEAKER / INTRO PROFILE (Portrait Left & Footer Links Layout)
        ========================================================================== */
     .profile-card {
-      display: grid;
-      grid-template-columns: 340px 1fr;
-      gap: 32px;
-      background: var(--profile-card-bg);
-      border: 1px solid var(--border-subtle);
-      border-radius: 20px;
-      padding: 28px;
-      backdrop-filter: blur(20px);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
-      align-items: center;
-    }
-
-    .profile-sidebar {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      text-align: center;
-      border-right: 1px solid var(--border-subtle);
-      padding-right: 28px;
-      justify-content: center;
+      background: var(--profile-card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 22px;
+      padding: 24px 28px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
     }
 
-    .avatar-wrapper {
+    .profile-main-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .profile-portrait-card {
       position: relative;
-      width: 180px;
-      height: 180px;
-      border-radius: 24px;
-      padding: 4px;
+      border-radius: 18px;
+      padding: 3px;
       background: var(--accent-gradient);
-      margin-bottom: 16px;
-      box-shadow: 0 12px 30px rgba(56, 189, 248, 0.35);
+      box-shadow: 0 12px 30px rgba(56, 189, 248, 0.25);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 340px;
       transition: var(--transition-base);
     }
 
-    .avatar-wrapper:hover {
-      transform: scale(1.02);
+    .profile-portrait-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(56, 189, 248, 0.35);
     }
 
-    .avatar-img {
+    .profile-portrait-img {
       width: 100%;
       height: 100%;
-      border-radius: 20px;
+      border-radius: 15px;
       object-fit: cover;
       object-position: center top;
+      display: block;
       background: #1e293b;
+    }
+
+    .profile-right-content {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3.5rem;
-      font-family: var(--font-heading);
-      font-weight: 800;
-      color: #fff;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .profile-header-info {
+      margin-bottom: 8px;
     }
 
     .speaker-name {
       font-family: var(--font-heading);
-      font-size: 1.35rem;
+      font-size: 1.5rem;
       font-weight: 800;
       color: var(--text-primary);
-      margin-bottom: 3px;
+      line-height: 1.2;
     }
 
     .speaker-role {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       color: var(--accent-sky);
       font-weight: 600;
-      margin-bottom: 16px;
+      letter-spacing: 0.02em;
     }
 
-    .social-pills {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-      width: 100%;
-    }
-
-    .social-pill {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(128, 128, 128, 0.06);
-      border: 1px solid var(--border-subtle);
-      padding: 6px 12px;
-      border-radius: 8px;
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 0.75rem;
-      font-family: var(--font-mono);
-      transition: var(--transition-base);
-    }
-
-    .social-pill:hover {
-      background: rgba(56, 189, 248, 0.12);
-      border-color: var(--border-accent);
-      color: var(--text-primary);
-      transform: translateX(2px);
-    }
-
-    /* Vertical Ordered List */
+    /* Direct Bio List */
     .bio-vertical-list {
       display: flex;
       flex-direction: column;
-      gap: 9px;
+      gap: 10px;
+      flex: 1;
       justify-content: center;
     }
 
@@ -560,55 +536,74 @@
       border-radius: 12px;
       padding: 10px 16px;
       transition: var(--transition-base);
+      font-size: 0.93rem;
+      font-weight: 500;
+      color: var(--text-primary);
     }
 
     .bio-list-row:hover {
       background: rgba(128, 128, 128, 0.08);
       border-color: var(--border-accent);
-      transform: translateX(3px);
+      transform: translateX(4px);
     }
 
-    .bio-num {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--accent-sky);
-      background: rgba(56, 189, 248, 0.1);
-      border: 1px solid var(--border-accent);
-      width: 28px;
-      height: 28px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .bio-bullet {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-sky);
+      box-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
       flex-shrink: 0;
     }
 
-    .bio-content {
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
-      flex-wrap: wrap;
+    .bio-text {
       flex: 1;
-    }
-
-    .bio-label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: var(--text-muted);
-      font-weight: 700;
-      min-width: 140px;
-    }
-
-    .bio-value {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      display: inline-flex;
+      line-height: 1.45;
+      display: flex;
       align-items: center;
       gap: 8px;
       flex-wrap: wrap;
+    }
+
+    .bio-text strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* Footer Social Links */
+    .profile-footer-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-subtle);
+      flex-wrap: wrap;
+    }
+
+    .footer-social-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(128, 128, 128, 0.06);
+      border: 1px solid var(--border-subtle);
+      padding: 7px 16px;
+      border-radius: 10px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-family: var(--font-mono);
+      font-weight: 500;
+      transition: var(--transition-base);
+    }
+
+    .footer-social-pill:hover {
+      background: rgba(56, 189, 248, 0.12);
+      border-color: var(--border-accent);
+      color: var(--text-primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
     }
 
     .itau-badge {
@@ -1045,94 +1040,91 @@
       </div>
     </section>
 
-    <!-- SLIDE 3: SOBRE MIM (VERTICAL ORDERED LIST) -->
+    <!-- SLIDE 3: SOBRE MIM (PORTRAIT LEFT & FOOTER LINKS) -->
     <section class="slide" data-title="Sobre Mim" data-notes="Trajetória: Engenheiro de Software no Itaú Unibanco, Coordenador SouJava, dedicação a AI-Augmented Engineering, 25 anos, casado, pai de uma bebê e criador de cavalos.">
       <div class="slide-content-wrapper">
-        <span class="slide-tag">Apresentação do Orador</span>
-        <h2 class="slide-title">Prazer, sou o <span class="gradient-text">Leandro Leite</span></h2>
+        <span class="slide-tag">~ % who am i</span>
         
         <div class="profile-card">
-          <!-- Profile Sidebar -->
-          <div class="profile-sidebar">
-            <div class="avatar-wrapper">
-              <img src="./assets/profile.jpeg" alt="Leandro Leite" class="avatar-img" onerror="this.outerHTML='<div class=\'avatar-img\'>LL</div>'">
+          <div class="profile-main-grid">
+            <!-- Left Side: Large Portrait Photo -->
+            <div class="profile-portrait-card">
+              <img src="./assets/profile.jpeg" alt="Leandro Leite" class="profile-portrait-img" onerror="this.src='./profile.jpeg'">
             </div>
-            <h3 class="speaker-name">Leandro Leite</h3>
-            <p class="speaker-role">AI-Augmented Engineer & Palestrante</p>
-            
-            <div class="social-pills">
-              <a href="https://linkedin.com/in/leandroleitetech" target="_blank" rel="noopener noreferrer" class="social-pill">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                <span>in/leandroleitetech</span>
-              </a>
-              <a href="https://leandroleitetech.com" target="_blank" rel="noopener noreferrer" class="social-pill">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                <span>leandroleitetech.com</span>
-              </a>
-              <a href="https://github.com/leandroleitetech" target="_blank" rel="noopener noreferrer" class="social-pill">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                <span>github/leandroleitetech</span>
-              </a>
+
+            <!-- Right Side: Header & Vertical List -->
+            <div class="profile-right-content">
+              <div class="profile-header-info">
+                <h2 class="speaker-name">Prazer, sou o <span class="gradient-text">Leandro Leite</span></h2>
+              </div>
+
+              <!-- Direct Bio List -->
+              <div class="bio-vertical-list">
+                <div class="bio-list-row">
+                  <span class="bio-bullet"></span>
+                  <div class="bio-text">
+                    Engenheiro de Software — <span class="itau-badge">Itaú Unibanco</span>
+                  </div>
+                </div>
+
+                <div class="bio-list-row">
+                  <span class="bio-bullet"></span>
+                  <div class="bio-text">
+                    Focado em soluções <strong>Java</strong> & <strong>Cloud Native</strong>
+                  </div>
+                </div>
+
+                <div class="bio-list-row">
+                  <span class="bio-bullet"></span>
+                  <div class="bio-text">
+                    Coordenador <span class="soujava-badge">SouJava</span> & <strong>Dev’s Fora da Curva</strong>
+                  </div>
+                </div>
+
+                <div class="bio-list-row">
+                  <span class="bio-bullet"></span>
+                  <div class="bio-text">
+                    Membro ativo e palestrante da comunidade tech
+                  </div>
+                </div>
+
+                <div class="bio-list-row">
+                  <span class="bio-bullet"></span>
+                  <div class="bio-text">
+                    Pai e Marido
+                  </div>
+                </div>
+
+                <div class="bio-list-row">
+                  <span class="bio-bullet"></span>
+                  <div class="bio-text">
+                    Entusiasta na criação de cavalos (desde a infância)
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- Main Details: Vertical Ordered List -->
-          <div class="bio-vertical-list">
-            
-            <div class="bio-list-row">
-              <span class="bio-num">01</span>
-              <div class="bio-content">
-                <span class="bio-label">Atuação Profissional</span>
-                <span class="bio-value">Engenheiro de Software <span class="itau-badge">Itaú Unibanco</span></span>
-              </div>
-            </div>
-
-            <div class="bio-list-row">
-              <span class="bio-num">02</span>
-              <div class="bio-content">
-                <span class="bio-label">Comunidade Técnica</span>
-                <span class="bio-value">Coordenador no <span class="soujava-badge">SouJava</span> (Sociedade de Usuários Java)</span>
-              </div>
-            </div>
-
-            <div class="bio-list-row">
-              <span class="bio-num">03</span>
-              <div class="bio-content">
-                <span class="bio-label">Especialidade & Foco</span>
-                <span class="bio-value">AI-Augmented Engineering & Palestrante de Tecnologia</span>
-              </div>
-            </div>
-
-            <div class="bio-list-row">
-              <span class="bio-num">04</span>
-              <div class="bio-content">
-                <span class="bio-label">Idade</span>
-                <span class="bio-value">25 anos</span>
-              </div>
-            </div>
-
-            <div class="bio-list-row">
-              <span class="bio-num">05</span>
-              <div class="bio-content">
-                <span class="bio-label">Família</span>
-                <span class="bio-value">Casado & Pai orgulhoso de uma bebezinha</span>
-              </div>
-            </div>
-
-            <div class="bio-list-row">
-              <span class="bio-num">06</span>
-              <div class="bio-content">
-                <span class="bio-label">Estilo de Vida</span>
-                <span class="bio-value">Criador de cavalos & Entusiasta do campo</span>
-              </div>
-            </div>
-
+          <!-- Bottom Footer: Social & Contact Links -->
+          <div class="profile-footer-links">
+            <a href="https://linkedin.com/in/leandroleitetech" target="_blank" rel="noopener noreferrer" class="footer-social-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              <span>linkedin.com/in/leandroleitetech</span>
+            </a>
+            <a href="https://leandroleitetech.com" target="_blank" rel="noopener noreferrer" class="footer-social-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              <span>leandroleitetech.com</span>
+            </a>
+            <a href="https://github.com/leandroleitetech" target="_blank" rel="noopener noreferrer" class="footer-social-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>github.com/leandroleitetech</span>
+            </a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SLIDE 3: AGENDA -->
+    <!-- SLIDE 4: AGENDA -->
     <section class="slide" data-title="Agenda do Workshop" data-notes="Apresentar o roteiro do dia para alinhar expectativas da comunidade. Destacar a parte prática com o Devin.">
       <div class="slide-content-wrapper">
         <span class="slide-tag">Roteiro do Workshop</span>
